@@ -10,7 +10,7 @@ const Header = () => {
         <>
         <header id='header'>
             
-            <div className='title'><h1>Firebase + React Login</h1></div>
+            <div className='title'><h1>Quick Cards</h1></div>
             
         </header>
         <div id='spacer'></div>
