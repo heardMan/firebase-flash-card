@@ -1,0 +1,262 @@
+.account-info {
+    position: relative;
+    border: solid #e8e8e8 1px;
+    padding: 1rem;
+    margin: 1rem auto 1rem auto;
+    max-width: 450px;
+    z-index: 700;
+    overflow: hidden;
+    background-color: #2e3131;
+    border-radius: 25px;
+}
+
+.account-field {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 1rem 0rem 1rem 0rem;
+    background-color: #2e3131;
+}
+
+.account-input {
+    /* border: solid white 1px; */
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
+.account-input-confirm {
+    width: 80%;
+    transform: translate(-7%, 0%);
+}
+
+.account-action {
+    /* border: solid white 1px; */
+    position: relative;
+    display: inline-block;
+    width: 10%;
+    height: 48px;
+}
+
+.account-edit {
+    border: solid white 1px;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 70%);
+    border-radius: 50px;
+    width: 48px;
+    height: 48px;
+    background-color: #008080;
+    color: #e8e8e8;
+}
+
+#delete-account {
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    color: #e8e8e8;
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    margin-top: 1rem;
+}
+
+.reauthModal {
+    display: none;
+    z-index: 0;
+}
+
+.reauthModal.open {
+    display: block;
+    z-index: 900;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.reauthModal-content {
+    position: relative;
+    background-color: #2e3131;
+    width: 90%;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1rem 2rem 1rem;
+    border-radius: 25px;
+    max-width: 350px;
+}
+
+.close-modal {
+    position: absolute;
+    top:1rem;
+    right:1rem;
+    background-color: transparent;
+    color:#e8e8e8;
+    border: solid 1px #e8e8e8;
+    border-radius: 30px;
+    width:36px;
+    height:36px;
+}
+
+.form-group {
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.form-group>button {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    padding: 1rem;
+    width: 95px;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    background-color: transparent;
+    color: #e8e8e8;
+}
+
+.hide-confirm {
+    height: 0px;
+    transition: 1s;
+}
+
+.open-confirm {
+    height: 48px;
+    transition: 1s;
+}
+
+.deleteModal {
+    display: none;
+    z-index: 0;
+}
+
+.deleteModal.open {
+    display: block;
+    z-index: 900;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.deleteModal-content {
+    position: relative;
+    background-color: #2e3131;
+    width: 90%;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1rem 2rem 1rem;
+    border-radius: 25px;
+    max-width: 350px;
+}
+
+.deleteModal-text {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.deleteModal-action {
+    display: flex;
+    justify-content: center;
+}
+
+.deleteModal-action>button {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    padding: 1rem;
+    width: 95px;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    background-color: #008080;
+    font-size: 1rem;
+    color: #e8e8e8;
+}
+
+.email-verified {
+    margin-left: 15%;
+    margin-right: auto;
+    margin-top: -0.5rem;
+    width:70%;
+}
+
+.verified {
+    color: green;
+}
+
+.unverified {
+    display: inline;
+    color: red;
+    margin-right: 1rem;
+}
+
+#verify-email {
+    border-radius: 25px;
+    border: solid 1px #e8e8e8;
+    color:#e8e8e8;
+    background-color: transparent;
+    transition: 0.5s;
+}
+    
+#verify-email:hover {
+    background-color: #008080;
+    transition: 0.5s;
+}
+
+#verify-email:active {
+    background-color: #008080;
+}
+
+
+.verifyModal {
+    display: none;
+    z-index: 0;
+}
+
+.verifyModal.open {
+    display: block;
+    z-index: 900;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.verifyModal-content {
+    position: relative;
+    background-color: #2e3131;
+    width: 90%;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1rem 2rem 1rem;
+    border-radius: 25px;
+    max-width: 350px;
+}
+
+.verifyModal-text {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.verifyModal-action {
+    display: flex;
+    justify-content: center;
+}
+
+.verifyModal-action>button {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    padding: 1rem;
+    width: 95px;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    background-color: #008080;
+    font-size: 1rem;
+    color: #e8e8e8;
+}

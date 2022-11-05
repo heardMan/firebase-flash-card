@@ -1,0 +1,60 @@
+#sign-up {
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    padding: 1rem;
+    margin: 1rem auto 1rem auto;
+    max-width: 500px;
+}
+
+#sign-up .form-group {
+    position: relative;
+    padding: 0rem 1rem 1rem 1rem;
+}
+
+#sign-up .form-group .validate-text {
+    position: absolute;
+    bottom: 0%;
+    left: 12%;
+    font-size: 0.75rem;
+    margin: 0px;
+    color: red;
+}
+
+#sign-up .form-submit {
+    border: solid 1px #e8e8e8;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    background-color: transparent;
+    color: #e8e8e8;
+    display: block;
+    margin: 2rem auto 1rem auto;
+    font-weight: 700;
+    width: 100%;
+    background-color: #979797;
+    transform: scale(1);
+    box-shadow: none;
+}
+
+#sign-up .form-submit.active {
+    background-color: green;
+    transform: scale(1.1);
+    box-shadow: 0px 3px 8px rgb(0 0 0 / 50%);
+}
+
+#sign-up .form-submit.active:active {
+    transform: scale(1);
+    box-shadow: none;
+}
+
+#sign-up .signin {
+    text-decoration: underline;
+    font-weight: 700;
+    color: #e8e8e8;
+}
+
+#sign-up .reset {
+    text-decoration: underline;
+    font-weight: 700;
+    color: #e8e8e8;
+}

@@ -1,0 +1,30 @@
+.signOut {
+    position: relative;
+    border: solid 1px #e8e8e8;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    background-color: transparent;
+    color: #e8e8e8;
+    display: block;
+    /* margin: 2rem auto 1rem auto; */
+    font-weight: 700;
+    width: 64px;
+    height: 64px;
+    background-color: #008080;
+    box-shadow: 0px 3px 8px rgb(0 0 0 / 50%);
+}
+
+.signOut>span{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+}
+
+
+.signOut:active {
+    transform: scale(1);
+    box-shadow: none;
+}
