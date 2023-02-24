@@ -1,0 +1,35 @@
+.accordion-title {
+    position: relative;
+}
+
+.accordion-toggle {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top:0px;
+    left:0px;
+    transform: translate(0px,-15px);
+}
+
+.accordion-toggle-icon { 
+    width: 50px;
+    height: 50px;
+    transform: rotate(-180deg);
+}
+
+.accordion-toggle-open {
+    transform: rotate(-90deg);
+}
+
+.accordion-content {
+    height: 0px;
+    transition: 1.5s;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.accordion-open {
+    height: 150px;
+    transition: 1.5s;
+}

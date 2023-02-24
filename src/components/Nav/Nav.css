@@ -33,6 +33,10 @@
     z-index: 900;
 }
 
+.menu>button {
+    z-index: 900;
+}
+
 .menu-item {
     text-align: center;
     text-decoration: none;
@@ -51,6 +55,7 @@
     z-index: 901;
     transition: 0.5s;
     transform: scale(0.8);
+    
 }
 
 .menu-item>a {
@@ -60,9 +65,36 @@
     transform: translate(-50%,-50%);
     text-decoration: none;
     color: #e8e8e8;
+    width: 100%;
 }
 
-.menu>:nth-child(1) {
+.menu-bg {
+    position: fixed;
+    bottom:0px;
+    right:0px;
+    width: 100vw;
+    height:100vh;
+    transition: 0.5s;
+    transition-delay: 0.8s;
+    opacity: 1;
+    visibility: hidden;
+}
+
+.menuOpen>.menu-bg{
+    position: fixed;
+    bottom:0px;
+    right:0px;
+    width: 100vw;
+    height:100vh;
+    /* background-color: rgba(200, 200, 200, 0.2); */
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+    transition: 0.5s;
+    z-index: 850;
+    visibility: visible;
+}
+
+.menu>:nth-child(2) {
     position: absolute;
     bottom: 30px;
     right: -149px;
@@ -73,7 +105,7 @@
    
 }
 
-.menuOpen>:nth-child(1) {
+.menuOpen>:nth-child(2) {
     position: absolute;
     bottom: 30px;
     right: -55px;
@@ -82,7 +114,7 @@
     /* animation: hopInLink 1s linear 0s; */
 }
 
-.menu>:nth-child(2) {
+.menu>:nth-child(3) {
     position: absolute;
     bottom: 110px;
     right: -149px;
@@ -91,7 +123,7 @@
     /* animation: hopOutLink 1s linear 0.15s; */
 }
 
-.menuOpen>:nth-child(2) {
+.menuOpen>:nth-child(3) {
     position: absolute;
     bottom: 110px;
     right: -55px;
@@ -100,7 +132,7 @@
     /* animation: hopInLink 1s linear 0.15s; */
 }
 
-.menu>:nth-child(3) {
+.menu>:nth-child(4) {
     position: absolute;
     bottom: 190px;
     right: -149px;
@@ -109,7 +141,7 @@
     /* animation: hopOutLink 1s linear 0.3s; */
 }
 
-.menuOpen>:nth-child(3) {
+.menuOpen>:nth-child(4) {
     position: absolute;
     bottom: 190px;
     right: -55px;
@@ -118,20 +150,36 @@
     /* animation: hopInLink 1s linear 0.3s; */
 }
 
-.menu>:nth-child(4) {
+.menu>:nth-child(5) {
     position: absolute;
-    bottom: 295px;
+    bottom: 270px;
     right: -149px;
     transition: 0.5s;
     transition-delay: 0.45s;
 }
 
-.menuOpen>:nth-child(4) {
+.menuOpen>:nth-child(5) {
     position: absolute;
-    bottom: 295px;
-    right: -30px;
+    bottom: 270px;
+    right: -55px;
     transition: 0.5s;
     transition-delay: 0.45s;
+}
+
+.menu>:nth-child(6) {
+    position: absolute;
+    bottom: 370px;
+    right: -149px;
+    transition: 0.5s;
+    transition-delay: 0.6s;
+}
+
+.menuOpen>:nth-child(6) {
+    position: absolute;
+    bottom: 370px;
+    right: -30px;
+    transition: 0.5s;
+    transition-delay: 0.6s;
 }
 
 .menu-link {

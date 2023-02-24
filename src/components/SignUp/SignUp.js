@@ -110,7 +110,7 @@ const SignUp = () => {
             try {
                 const newUser = await createAuthUser(email, password);
                 await User.createUserProfile(newUser.user.uid, email, firstName, lastName );
-                navigate('/account');
+                navigate('/signin');
             }
             catch (e) {
                 console.log(e.message)

@@ -23,6 +23,7 @@ const Account = () => {
 
     const navigate = useNavigate();
 
+    const [aUsr, setAUsr] = useState('');
     const [fName, setFName] = useState('');
     const [fNameActive, setFNameActive] = useState(false);
     const [lName, setLName] = useState('');

@@ -10,6 +10,7 @@ import PasswordReset from './components/PasswordReset/PasswordReset.js';
 import Nav from './components/Nav/Nav.js';
 import Header from './components/Header/Header.js';
 import Contact from './components/Contact/Contact.js';
+import CardSetManager from './components/CardSetManager/CardSetManager.js';
 import FAQ from './components/FAQ/FAQ.js';
 
 function App() {
@@ -24,6 +25,11 @@ function App() {
             <Route path='/' element={
               <ProtectedRoute>
                 <Account />
+              </ProtectedRoute>
+            } />
+            <Route path='/cardsets' element={
+              <ProtectedRoute>
+                <CardSetManager />
               </ProtectedRoute>
             } />
             <Route path='/signup' element={<SignUp />} />

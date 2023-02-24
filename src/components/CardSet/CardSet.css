@@ -1,0 +1,51 @@
+#card-set {
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    padding:1rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+#card-set > details > summary {
+    list-style: '+';
+    list-style-position: inside;
+}
+
+.card-set-controls {
+    position: relative;
+    width: 50%;
+    height: 50px;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#card-set .edit-card-set, .delete-card-set {
+    border-radius: 50px;
+    background-color: blueviolet;
+    width: 48px;
+    height: 48px;
+    border: none;
+}
+
+#card-set .edit-card-set {
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
+
+#card-set .delete-card-set {
+    position: absolute;
+    right: 0px;
+    top:0px;
+}
+
+#card-set .edit-card-set > img { 
+    width: auto;
+    height: 28px;
+    transform: rotate(30deg);
+}

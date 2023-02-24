@@ -1,0 +1,90 @@
+#card-set-manager .card-set-list>ul {
+    padding: 0px;
+    list-style-type: none;
+}
+
+/* #card-set-manager .card-set-list>ul>li>div {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+} */
+
+#add-set>button {
+    padding: 1rem;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    display: block;
+    margin: 1rem auto 1rem auto;
+    background-color: #008080;
+    color: #e8e8e8;
+}
+
+#add-set-modal {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height:100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#add-set-modal.open {
+    display: block;
+}
+
+#add-set-modal-window {
+    position: absolute;
+    top:50%;
+    left:50%;
+    min-width: 250px;
+    max-width: 500px;
+    padding: 1rem;
+    transform: translate(-50%,-50%);
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    background-color: #2e3131;
+}
+
+#add-set-modal-close {
+    position: absolute;
+    top:5px;
+    right: 5px;
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    width: 50px;
+    height:50px;
+    padding: 0.5rem;
+}
+
+#add-set-modal-content {
+    margin-top: 50px;
+}
+
+#add-set-modal-action {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+
+}
+
+#add-set-modal-affirm {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+}
+
+#add-set-modal-cancel {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+}
+
