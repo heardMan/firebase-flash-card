@@ -20,7 +20,7 @@ const Accordion = props => {
             <p>{props.title}</p>
             </div>
             {/* content element */}
-            <div className={`accordion-content ${open === true ? 'accordion-open' : ''}`}>{props.content}</div>
+            <div className={`accordion-content ${open === true ? 'accordion-open' : ''}`}>{props.children}</div>
         </div>
     );
 };

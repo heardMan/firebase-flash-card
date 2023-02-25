@@ -204,7 +204,7 @@
         position: absolute;
         top: 65px;
         left: 50px;
-        transition-delay: 0.25s;
+        transition-delay: 0s;
     }
 
     .menuOpen>:nth-child(2) {
@@ -212,14 +212,14 @@
         top: 65px;
         left: -50px;
         transition: 0.5s;
-        transition-delay: 0.25s;
+        transition-delay: 0s;
     }
 
     .menu>:nth-child(3) {
         position: absolute;
         top: 145px;
         left: 50px;
-        transition-delay: 0.5s;
+        transition-delay: 0.15s;
     }
 
     .menuOpen>:nth-child(3) {
@@ -227,14 +227,14 @@
         top: 145px;
         left: -50px;
         transition: 0.5s;
-        transition-delay: 0.5s;
+        transition-delay: 0.15s;
     }
 
     .menu>:nth-child(4) {
         position: absolute;
         top: 225px;
         left: 50px;
-        transition-delay: 0.75s;
+        transition-delay: 0.3s;
     }
 
     .menuOpen>:nth-child(4) {
@@ -242,14 +242,14 @@
         top: 225px;
         left: -50px;
         transition: 0.5s;
-        transition-delay: 0.75s;
+        transition-delay: 0.3s;
     }
 
     .menu>:nth-child(5) {
         position: absolute;
         top: 305px;
         left: 50px;
-        transition-delay: 0.75s;
+        transition-delay: 0.45s;
     }
 
     .menuOpen>:nth-child(5) {
@@ -257,14 +257,14 @@
         top: 305px;
         left: -50px;
         transition: 0.5s;
-        transition-delay: 0.75s;
+        transition-delay: 0.45s;
     }
 
     .menu>:nth-child(6) {
         position: absolute;
         top: 405px;
         left: 50px;
-        transition-delay: 0.75s;
+        transition-delay: 0.6s;
     }
 
     .menuOpen>:nth-child(6) {
@@ -272,7 +272,7 @@
         top: 405px;
         left: -25px;
         transition: 0.5s;
-        transition-delay: 0.75s;
+        transition-delay: 0.6s;
     }
 }
 

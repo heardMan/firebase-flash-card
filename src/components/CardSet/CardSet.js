@@ -7,7 +7,7 @@ const CardSet = props => {
 
 
     return (
-        <div id='card-set'>
+        <div className='card-set'>
             <div>
                 <div>
                     <div className='card-title'>{props.name}</div>
@@ -15,10 +15,10 @@ const CardSet = props => {
 
                 </div>
                 <div className='cards'>
-                    {
-                        props.cards === undefined || props.cards.length > 0 ? 'No cards yet' : 'Look at all these cards'
-                    }
-                    <Accordion title={'Card Set'} content={'Content'}></Accordion>
+                    <Accordion title={'Card Set'}>
+                    {props.cards === undefined || props.cards.length > 0 ? 'No cards yet' : props.cards}
+
+                    </Accordion>
                 </div>
                 <div className='card-set-controls'>
                     <button className='edit-card-set'>
