@@ -29,6 +29,7 @@ const CardSetManager = () => {
     }, [authUser.auth])
 
     return (
+        <>
         <div id='card-set-manager'>
 
             <div id='add-set'>
@@ -45,7 +46,53 @@ const CardSetManager = () => {
                     New Card Set +
                 </button>
 
-                <div id='add-set-modal' className={addSetModalOpen === true ? 'open' : ''}>
+                
+
+
+            </div>
+
+
+
+
+            <div className='card-set-list'>
+                <ul>
+                    {
+                        cardSets.length === 0 ?
+                            <li>
+                                <div >
+                                    <p>You don't have any Card Sets yet.</p>
+
+                                </div>
+                            </li>
+                            :
+
+                            cardSets.map((cardset, i) => {
+                                return (
+                                    <li key={i}>
+
+                                        <CardSet
+                                            name={(cardset.name)}
+                                            description={(cardset.description)}
+                                            cards={(cardset.cards)}
+                                        />
+
+
+
+                                    </li>
+                                )
+                            })
+
+                    }
+                </ul>
+            </div>
+
+
+
+
+
+        </div>
+        
+        <div id='add-set-modal' className={addSetModalOpen === true ? 'open' : ''}>
 
                     <div id='add-set-modal-window'>
                         <button id='add-set-modal-close' onClick={e => setAddSetModalOpen(false)}>x</button>
@@ -89,48 +136,7 @@ const CardSetManager = () => {
                     </div>
 
                 </div>
-            </div>
-
-
-
-
-            <div className='card-set-list'>
-                <ul>
-                    {
-                        cardSets.length === 0 ?
-                            <li>
-                                <div >
-                                    <p>You don't have any Card Sets yet.</p>
-
-                                </div>
-                            </li>
-                            :
-
-                            cardSets.map((cardset, i) => {
-                                return (
-                                    <li key={i}>
-
-                                        <CardSet
-                                            name={(cardset.name)}
-                                            description={(cardset.description)}
-                                            cards={(cardset.cards)}
-                                        />
-
-
-
-                                    </li>
-                                )
-                            })
-
-                    }
-                </ul>
-            </div>
-
-
-
-
-
-        </div>
+        </>
     );
 };
 

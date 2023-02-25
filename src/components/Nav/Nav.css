@@ -200,63 +200,77 @@
         top: 0.5rem;
     }
 
-    .menu>:nth-child(1) {
-        position: absolute;
-        top: 60px;
-        left: 50px;
-        transition-delay: 0s;
-    }
-
-    .menuOpen>:nth-child(1) {
-        position: absolute;
-        top: 60px;
-        left: -55px;
-        transition: 0.5s;
-        transition-delay: 0s;
-        z-index: 899;
-    }
-
     .menu>:nth-child(2) {
         position: absolute;
-        top: 140px;
+        top: 65px;
         left: 50px;
         transition-delay: 0.25s;
     }
 
     .menuOpen>:nth-child(2) {
         position: absolute;
-        top: 140px;
-        left: -55px;
+        top: 65px;
+        left: -50px;
         transition: 0.5s;
         transition-delay: 0.25s;
     }
 
     .menu>:nth-child(3) {
         position: absolute;
-        top: 220px;
+        top: 145px;
         left: 50px;
         transition-delay: 0.5s;
     }
 
     .menuOpen>:nth-child(3) {
         position: absolute;
-        top: 220px;
-        left: -55px;
+        top: 145px;
+        left: -50px;
         transition: 0.5s;
         transition-delay: 0.5s;
     }
 
     .menu>:nth-child(4) {
         position: absolute;
-        top: 330px;
+        top: 225px;
         left: 50px;
         transition-delay: 0.75s;
     }
 
     .menuOpen>:nth-child(4) {
         position: absolute;
-        top: 325px;
-        left: -30px;
+        top: 225px;
+        left: -50px;
+        transition: 0.5s;
+        transition-delay: 0.75s;
+    }
+
+    .menu>:nth-child(5) {
+        position: absolute;
+        top: 305px;
+        left: 50px;
+        transition-delay: 0.75s;
+    }
+
+    .menuOpen>:nth-child(5) {
+        position: absolute;
+        top: 305px;
+        left: -50px;
+        transition: 0.5s;
+        transition-delay: 0.75s;
+    }
+
+    .menu>:nth-child(6) {
+        position: absolute;
+        top: 405px;
+        left: 50px;
+        transition-delay: 0.75s;
+    }
+
+    .menuOpen>:nth-child(6) {
+        position: absolute;
+        top: 405px;
+        left: -25px;
         transition: 0.5s;
         transition-delay: 0.75s;
     }

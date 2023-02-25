@@ -36,7 +36,7 @@
 }
 
 #add-set-modal-window {
-    position: absolute;
+    position: fixed;
     top:50%;
     left:50%;
     min-width: 250px;
@@ -46,6 +46,7 @@
     border: solid 1px #e8e8e8;
     border-radius: 25px;
     background-color: #2e3131;
+    z-index: 800;
 }
 
 #add-set-modal-close {
