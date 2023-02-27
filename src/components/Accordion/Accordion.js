@@ -6,10 +6,10 @@ import './Accordion.css';
 
 const Accordion = props => {
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(props.open)
 
     return (
-        <div id='accordion'>
+        <div className='accordion'>
             
             {/* title element */}
             <div className='accordion-title'>

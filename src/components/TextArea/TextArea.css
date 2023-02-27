@@ -1,0 +1,39 @@
+.text-area {
+    position: relative;
+    margin: 0rem;
+    padding: 1.5rem;
+}
+
+.text-area label {
+    position: absolute;
+    top:10px;
+    left:25px;
+    z-index: 400;
+    font-size: 1.25rem;
+    font-weight: 400;
+    transition: 1s;
+    transform: scale(1);   
+}
+
+.text-area > .focused {
+    font-weight: 700;
+    transform: translate(-30%,-135%) scale(0.7);
+    transition: 1s;
+}
+
+.text-area textarea {
+    position: absolute;
+    top:0px;
+    left:50%;
+    background-color: transparent;
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    color: #e8e8e8;
+    font-size: 1rem;
+    z-index: 950;
+    width: 80%;
+    transform: translate(-50%,0%);
+    font-size: 1.25rem;
+    overflow: scroll;
+    padding: 0.5rem;
+}
