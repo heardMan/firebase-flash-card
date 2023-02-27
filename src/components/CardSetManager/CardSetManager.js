@@ -57,7 +57,7 @@ const CardSetManager = () => {
             <div className='card-set-list'>
                 <ul>
                     {
-                        cardSets.length === 0 ?
+                        cardSets === undefined || cardSets.length === 0 ?
                             <li>
                                 <div >
                                     <p>You don't have any Card Sets yet.</p>

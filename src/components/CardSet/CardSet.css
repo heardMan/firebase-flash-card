@@ -179,11 +179,13 @@
 .switch-container {
     display: inline;
     position: absolute;
+    left: 50%;
     bottom: 125px;
     z-index: 970;
     border-radius: 50px;
     user-select: none;
     overflow: hidden;
+    transform: translate(0px, -50%);
 }
 
 .switch {
