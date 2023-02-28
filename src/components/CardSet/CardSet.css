@@ -139,7 +139,13 @@
 }
 
 #add-card-modal-content {
-    margin-top: 50px;
+    position: absolute;
+    top: 55px;
+    left:50%;
+    transform: translate(-50%,0%);
+    height: 75%;
+    width: 100%;
+    border: solid 1px #e8e8e8;
 }
 
 #add-card-modal-action {
@@ -163,6 +169,7 @@
     margin: 1em;
     width: 96px;
     height: 48px;
+    font-size: 1rem;
 }
 
 #add-card-modal-cancel {
@@ -174,18 +181,44 @@
     margin: 1em;
     width: 96px;
     height: 48px;
+    font-size: 1rem;
 }
+
+
+
+#addcard {
+    position: relative;
+    height: 100%;
+    border: solid 1px #e8e8e8;
+    margin: 1rem;
+}
+
+.add-card-form {
+    overflow: hidden;
+    height: 70%;
+    border: solid 1px #e8e8e8;
+    margin: 1rem;
+}
+
+.add-card-form-group{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: inline;
+}
+
+
+
 
 .switch-container {
     display: inline;
     position: absolute;
     left: 50%;
-    bottom: 125px;
+    bottom: 5px;
     z-index: 970;
     border-radius: 50px;
     user-select: none;
     overflow: hidden;
-    transform: translate(0px, -50%);
+    transform: translate(-50%, 0%);
 }
 
 .switch {

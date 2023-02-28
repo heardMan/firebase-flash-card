@@ -79,15 +79,26 @@ const CardSet = props => {
             <div id='add-card-modal' className={addCardModalOpen === true ? 'open' : ''}>
 
                 <div id='add-card-modal-window'>
+
                     <button id='add-card-modal-close' onClick={e => setAddCardModalOpen(false)}>x</button>
+
                     <div id='add-card-modal-content'>
 
-                        <form id='addcard'>
-                            <div className='form-group'>
-                                <TextArea label={'front'} value={newCardFront} onChange={text => {
-                                    setNewCardFront(text)
-                                }} disabled={false} />
-                            </div>
+                        <form id='addcar'>
+
+                           
+
+                                {/* <div className='add-card-form-group'>
+                                    <TextArea label={'front'} value={newCardFront} onChange={text => {setNewCardFront(text)}} disabled={false} />
+                                </div> */}
+
+                                {/* <div className='add-card-form-group'>
+                                    <TextArea label={'back'} value={newCardBack} onChange={text => {setNewCardBack(text)}} disabled={false} />
+                                </div> */}
+
+                           
+
+
                             <div
                                 className='switch-container'
                                 onClick={() => {
@@ -100,25 +111,16 @@ const CardSet = props => {
 
                                 }}>
                                 <div className='switch'>
-                                    
-                                   
-                                        <div className={`${switchActive === true ? 'switch-toggle-on' : 'switch-toggle-off'}`}>
+                                    <div className={`${switchActive === true ? 'switch-toggle-on' : 'switch-toggle-off'}`}>
                                         <div className='switch-toggle'></div>
-                                        <p className='switch-front'>front</p>
-                                        </div>
-
-                                     
-
-                                   
-
+                                        <p className='switch-front'>back</p>
+                                    </div>
                                 </div>
-                                <p className='switch-back'>back</p>
-                                
-                                
+                                <p className='switch-back'>front</p>
                             </div>
-                            {/* <div className='form-group'>
-                                    <TextArea label={'back'} value={''} onChange={console.log('setBack')} disabled={false} />
-                                </div> */}
+
+
+                            
                         </form>
 
                     </div>
@@ -140,7 +142,7 @@ const CardSet = props => {
 
                             //     })
                             //     .catch(e => console.log(e))
-                        }}>Create Card</button>
+                        }}>Save</button>
                         <button id='add-card-modal-cancel' onClick={e => {
                             setAddCardModalOpen(false);
                             // setName('');

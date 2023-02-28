@@ -44,7 +44,6 @@ const TextArea = props => {
             <label className={focusedClass} >{props.label}</label>
 
             <textarea
-                type='textarea'
                 value={props.value}
                 onChange={e=>props.onChange(e.target.value)}
                 onFocus={() => setFocus(true)}

@@ -1,7 +1,7 @@
 .text-area {
     position: relative;
     margin: 0rem;
-    padding: 1.5rem;
+    padding: 0rem;
 }
 
 .text-area label {
@@ -22,7 +22,7 @@
 }
 
 .text-area textarea {
-    position: absolute;
+    position: relative;
     top:0px;
     left:50%;
     background-color: transparent;
