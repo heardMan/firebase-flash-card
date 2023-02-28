@@ -84,7 +84,11 @@ const CardSet = props => {
 
                     <div id='add-card-modal-content'>
 
-                        <form id='addcar'>
+                        <form id='addcard'>
+
+                            <div className='add-card-form'>
+
+                            </div>
 
                            
 
