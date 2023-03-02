@@ -20,6 +20,9 @@ const CardSet = props => {
 
     const [switchActive, setSwitchActive] = useState(false)
 
+    const [focusFront, setFocusFront] = useState(false);
+    const [focusBack, setFocusBack] = useState(false);
+
 
 
     return (
@@ -86,21 +89,43 @@ const CardSet = props => {
 
                         <form id='addcard'>
 
-                            <div className='add-card-form'>
+                            <div className={`add-card-form${switchActive === true ? ' flipped' : ''}`}>
+
+                                <div className='add-card-form-2'>
+
+                                    <div className='add-card-front'>
+                                        <label className={`${focusFront === true ? 'inFocus':'noFocus'}`}>front</label>
+                                        <textarea
+                                            onFocus={() => setFocusFront(true)}
+                                            onBlur={() => setFocusFront(false)}
+                                            onChange={text => { setNewCardFront(text.target.value) }}
+                                            value={newCardFront}
+                                        ></textarea>
+                                    </div>
+
+                                    <div className='add-card-back'>
+                                        <label className={`${focusBack === true ? 'inFocus':'noFocus'}`}>back</label>
+                                        <textarea
+                                            onFocus={() => setFocusBack(true)}
+                                            onBlur={() => setFocusBack(false)}
+                                            onChange={text => { setNewCardBack(text.target.value) }}
+                                            value={newCardBack}
+                                        ></textarea>
+                                        {/* <TextArea label={'back'} value={newCardBack} onChange={text => { setNewCardBack(text) }} disabled={false} /> */}
+                                    </div>
+
+
+                                </div>
 
                             </div>
 
-                           
 
-                                {/* <div className='add-card-form-group'>
-                                    <TextArea label={'front'} value={newCardFront} onChange={text => {setNewCardFront(text)}} disabled={false} />
-                                </div> */}
 
-                                {/* <div className='add-card-form-group'>
-                                    <TextArea label={'back'} value={newCardBack} onChange={text => {setNewCardBack(text)}} disabled={false} />
-                                </div> */}
 
-                           
+
+
+
+
 
 
                             <div
@@ -117,14 +142,14 @@ const CardSet = props => {
                                 <div className='switch'>
                                     <div className={`${switchActive === true ? 'switch-toggle-on' : 'switch-toggle-off'}`}>
                                         <div className='switch-toggle'></div>
-                                        <p className='switch-front'>back</p>
+                                        <p className='switch-front'>front</p>
                                     </div>
                                 </div>
-                                <p className='switch-back'>front</p>
+                                <p className='switch-back'>back</p>
                             </div>
 
 
-                            
+
                         </form>
 
                     </div>
