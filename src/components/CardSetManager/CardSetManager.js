@@ -25,16 +25,24 @@ const CardSetManager = () => {
 
     const updateCardSetInfo = (id, name, desc) => {
         CardSetController
-        .update(id,{'uid':authUser.auth.uid,'name':name,'description':desc})
-        .then(()=>{
-            CardSetController
-                .getAllByUID(authUser.auth.uid)
-                .then(data => setCardSets(data))
-                .catch(e => console.log(e));
-            
-        })
-        .catch(e => console.log(e));
-     }
+            .update(id, { 'uid': authUser.auth.uid, 'name': name, 'description': desc })
+            .then(() => {
+                CardSetController
+                    .getAllByUID(authUser.auth.uid)
+                    .then(data => setCardSets(data))
+                    .catch(e => console.log(e));
+
+            })
+            .catch(e => console.log(e));
+    }
+
+    const refreshCardSetInfo = () => {
+
+        return CardSetController
+            .getAllByUID(authUser.auth.uid)
+            .then(data => setCardSets(data))
+            .catch(e => console.log(e));
+    }
 
     useEffect(() => {
 
@@ -98,7 +106,6 @@ const CardSetManager = () => {
                                                 cards={(cardset.cards)}
                                                 updateInfo={updateCardSetInfo}
                                                 delete={deleteCardSet}
-
                                             />
 
 

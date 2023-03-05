@@ -1,41 +1,43 @@
-.addcard {
+.editcard {
     position: relative;
-    height: 100%;
     height: 350px;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
-.add-card-form {
+.edit-card-form {
     /* position: relative;
     height: 100%;
     perspective: 1000px; */
-
+    background-color: #008080;
     height: 100%;
     border: 1px solid #f1f1f1;
     perspective: 1000px;
+    border-radius: 25px;
+    /* padding-top: 60px; */
 }
 
-.add-card-form-2 {
+.edit-card-form-2 {
     height: 75%;
     /* border: solid 1px #e8e8e8; */
     width: 90%;
-    transform: translate(5%, 0%);
-
-    position: relative;
+    position: absolute;
+    top: 56px;
+    left:50%;
+    transform: translate(-50%,0%);
     transition: transform 0.8s;
     transform-style: preserve-3d;
 
 }
 
-.flipped .add-card-form-2 {
-    transform: rotateY(180deg) translate(-5%, 0%);
+.flipped .edit-card-form-2 {
+    transform: rotateY(180deg) translate(50%,0%);
 
 
 }
 
 
-.add-card-front,
-.add-card-back {
+.edit-card-front,
+.edit-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -43,20 +45,20 @@
     border-radius: 25px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    
+
 }
 
-.add-card-back {
+.edit-card-back {
     transform: rotateY(180deg);
 }
 
-.add-card-front>textarea,
-.add-card-back>textarea {
+.edit-card-front>textarea,
+.edit-card-back>textarea {
     position: absolute;
-    top: 55%;
+    top: 110px;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 70%;
+    height: 60%;
     width: 80%;
     border-radius: 25px;
     background-color: #2e3131;
@@ -68,9 +70,9 @@
     resize: none;
 }
 
-.noFocus {
+.editCardNotInFocus {
     position: absolute;
-    top: 15%;
+    top: 24px;
     left: 10%;
     transform: translate(0%, 0%);
     z-index: 875;
@@ -81,10 +83,10 @@
     font-weight: 500;
 }
 
-.inFocus {
+.editCardInFocus {
     position: absolute;
-    top:5%;
-    left:5%;
+    top: -5px;
+    left: 5%;
     transform: translate(0%, 0%);
     z-index: 875;
     font-size: 14px;
@@ -94,19 +96,19 @@
     transition: 0.5s linear;
 }
 
-.switch-container {
+.edit-card-switch-container {
     display: inline;
     position: absolute;
-    left: 50%;
-    bottom: 10px;
+    right: 15%;
+    bottom: 20px;
     z-index: 970;
     border-radius: 50px;
     user-select: none;
     overflow: hidden;
-    transform: translate(-50%, 0%);
+    transform: translate(-0%, 0%);
 }
 
-.switch {
+.edit-card-switch {
     position: relative;
     width: 96px;
     height: 48px;
@@ -117,7 +119,7 @@
     z-index: 940;
 }
 
-.switch-toggle {
+.edit-card-switch-toggle {
     position: absolute;
     top: 50%;
     left: 0px;
@@ -132,7 +134,7 @@
 
 
 
-.switch-toggle-off {
+.edit-card-switch-toggle-off {
     position: absolute;
     top: 50%;
     left: 0px;
@@ -148,7 +150,7 @@
 
 }
 
-.switch-toggle-on {
+.edit-card-switch-toggle-on {
     position: absolute;
     top: 50%;
     left: 46px;
@@ -164,7 +166,7 @@
 
 }
 
-.switch-front {
+.edit-card-switch-front {
     position: absolute;
     top: 0%;
     right: 5%;
@@ -174,7 +176,7 @@
     z-index: 985;
 }
 
-.switch-back {
+.edit-card-switch-back {
     position: absolute;
     top: 0%;
     left: 8%;
@@ -182,4 +184,125 @@
     color: #008080;
     font-weight: bold;
     z-index: 945;
+}
+
+.delete-card {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #008080;
+    width: 48px;
+    height: 48px;
+    border: solid #e8e8e8 1px;
+    color: #e8e8e8;
+    border-radius: 50px;
+    z-index: 800;
+
+}
+
+.update-card {
+    position: absolute;
+    left: 15%;
+    bottom: 20px;
+    background-color: #008080;
+    width: 48px;
+    height: 48px;
+    border: solid #e8e8e8 1px;
+    color: #e8e8e8;
+    border-radius: 50px;
+    z-index: 800;
+
+}
+
+#delete-card-modal {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 800;
+}
+
+#delete-card-modal.open {
+    display: block;
+}
+
+
+
+#delete-card-modal-window {
+    position: fixed;
+    top: 30vh;
+    left: 50%;
+    height: 30vh;
+    min-width: 250px;
+    max-width: 500px;
+    padding: 1rem;
+    transform: translate(-50%, -0%);
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    background-color: #2e3131;
+    z-index: 800;
+}
+
+#delete-card-modal-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    width: 50px;
+    height: 50px;
+    padding: 0.5rem;
+}
+
+#delete-card-modal-content {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 70%;
+    width: 100%;
+}
+
+#delete-card-modal-content > p {
+    text-align: center;
+}
+
+#delete-card-modal-action {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    bottom: 0rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+#delete-card-modal-affirm {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+    margin: 1em;
+    width: 96px;
+    height: 48px;
+    font-size: 1rem;
+}
+
+#delete-card-modal-cancel {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+    margin: 1em;
+    width: 96px;
+    height: 48px;
+    font-size: 1rem;
 }

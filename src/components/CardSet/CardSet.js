@@ -30,24 +30,40 @@ const CardSet = props => {
     const [name, setName] = useState(props.name);
     const [description, setDescription] = useState(props.description);
 
-    const [cards, setCards] = useState([]);
+    const [cards, setCards] = useState(props.cards);
 
-    const createCard = ()=>{
+    const createCard = () => {
 
         CardController
-        .create(props.id, newCardFront, newCardBack)
-        .then(()=>{
-            CardController
-                .getAllBySetID(props.id)
-                .then(data => setCards(data))
-                .catch(e => console.log(e));
-        })
-        .catch(e => console.log(e));
+            .create(props.id, newCardFront, newCardBack)
+            .then(() => {
+                CardController
+                    .getAllBySetID(props.id)
+                    .then(data => setCards(data))
+                    .catch(e => console.log(e));
+            })
+            .catch(e => console.log(e));
 
     }
 
-    const updateCard = ()=>{return true}
-    const deleteCard = ()=>{return true}
+    const updateCard = (id, front, back) => {
+        CardController
+            .update(id, { front: front, back: back })
+            .then(() => console.log('update card'))
+            .catch(e => console.log(e));
+    }
+
+    const deleteCard = id => {
+        CardController
+            .delete(id)
+            .then(() => {
+                CardController
+                    .getAllBySetID(props.id)
+                    .then(data => setCards(data))
+                    .catch(e => console.log(e));
+            })
+            .catch(e => console.log(e));
+    }
 
 
     useEffect(() => {
@@ -58,7 +74,7 @@ const CardSet = props => {
                 .getAllBySetID(props.id)
                 .then(data => setCards(data))
                 .catch(e => console.log(e));
-        
+
         }
     }, [])
 
@@ -127,9 +143,18 @@ const CardSet = props => {
                                         <p>No cards yet</p>
                                         :
                                         <div className='cardList'>
-                                            {cards.map((card,i)=><Card key={i} id={card.id} front={card.front} back={card.back} />)}
+                                            {cards.map((card, i) =>
+
+                                                <Card
+                                                    key={i} id={card.id}
+                                                    front={card.front}
+                                                    back={card.back}
+                                                    update={updateCard}
+                                                    delete={deleteCard} />
+
+                                            )}
                                         </div>
-                                        
+
                                 }
                             </div>
                         </div>
@@ -172,7 +197,7 @@ const CardSet = props => {
                                             onChange={text => { setNewCardBack(text.target.value) }}
                                             value={newCardBack}
                                         ></textarea>
-                                       
+
                                     </div>
 
 
@@ -235,19 +260,19 @@ const CardSet = props => {
 
 
 
-            <div id='delete-card-modal' className={deleteCardModalOpen === true ? 'open' : ''}>
+            <div id='delete-cardset-modal' className={deleteCardModalOpen === true ? 'open' : ''}>
 
-                <div id='delete-card-modal-window'>
+                <div id='delete-cardset-modal-window'>
 
-                    <button id='delete-card-modal-close' onClick={e => setDeleteCardModalOpen(false)}>x</button>
+                    <button id='delete-cardset-modal-close' onClick={e => setDeleteCardModalOpen(false)}>x</button>
 
-                    <div id='delete-card-modal-content'>
+                    <div id='delete-cardset-modal-content'>
 
                         <p>Are you sure you want to delete this card set?</p>
 
                     </div>
-                    <div id='delete-card-modal-action'>
-                        <button id='delete-card-modal-affirm' onClick={e => {
+                    <div id='delete-cardset-modal-action'>
+                        <button id='delete-cardset-modal-affirm' onClick={e => {
                             e.preventDefault();
                             console.log('deleting...')
                             setDeleteCardModalOpen(false);
@@ -257,7 +282,7 @@ const CardSet = props => {
                             //     .delete(props.id)
                             //     .catch(e => console.log(e))
                         }}>Delete</button>
-                        <button id='delete-card-modal-cancel' onClick={e => {
+                        <button id='delete-cardset-modal-cancel' onClick={e => {
                             setDeleteCardModalOpen(false);
                             // setName('');
                             // setDescription('');
@@ -288,11 +313,11 @@ const CardSet = props => {
                     <div id='edit-set-modal-action'>
                         <button id='edit-set-modal-affirm' onClick={e => {
                             e.preventDefault();
-                            props.updateInfo(props.id,name,description)
+                            props.updateInfo(props.id, name, description)
                             setEditSetModalOpen(false);
-                            
 
-                            
+
+
                         }}>Update Set</button>
                         <button id='edit-set-modal-cancel' onClick={e => {
                             setEditSetModalOpen(false);

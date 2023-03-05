@@ -1,5 +1,5 @@
 import { DB, AUTH } from '../firebase.js';
-import { set, ref, onValue, get, child, update, push } from 'firebase/database';
+import { set, ref, onValue, get, child, update, push, remove } from 'firebase/database';
 
 const Card = {
 
@@ -70,8 +70,8 @@ const Card = {
       console.log(id);
       console.log(data);
       const updates = {}
-      updates['/cards/'+id+'/uid'] = data['uid']
-      updates['/cards/'+id+'/setid'] = data['setid']
+      //updates['/cards/'+id+'/uid'] = data['uid']
+      //updates['/cards/'+id+'/setid'] = data['setid']
       updates['/cards/'+id+'/front'] = data['front']
       updates['/cards/'+id+'/back'] = data['back']
       return update(ref(DB), updates)
@@ -81,7 +81,16 @@ const Card = {
     }
   },
 
-  delete: async (id) => { }
+  delete: async (id) => {
+    
+    try {
+      return remove(ref(DB, '/cards/'+id))
+    }
+    catch (e) {
+      console.log(e.message);
+    }
+
+   }
   
 };
 
