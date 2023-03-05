@@ -1,15 +1,16 @@
 import { DB, AUTH } from '../firebase.js';
-import { set, ref, onValue, get, child, update, push, remove } from 'firebase/database';
+import { set, ref, onValue, get, child, update, push } from 'firebase/database';
 
-const CardSet = {
+const Card = {
 
-  create: async (uid, name, description) => {
-    const id = push(child(ref(DB), '/cardsets/')).key
+  create: async (setid, front, back) => {
+    const id = push(child(ref(DB), '/cards/')).key
     try {
-      set(ref(DB, '/cardsets/' + id), {
-        uid: uid,
-        name: name,
-        description: description
+      set(ref(DB, '/cards/' + id), {
+        id:id,
+        setid: setid,
+        front: front,
+        back: back
       })
     }
     catch (e) {
@@ -20,7 +21,7 @@ const CardSet = {
   getByID: async (id) => {
     try {
       const dbRef = ref(DB);
-      return await get(child(dbRef, `/cardsets/${id}`)).then((snapshot) => {
+      return await get(child(dbRef, `/cards/${id}`)).then((snapshot) => {
         if (snapshot.exists()) {
           return snapshot.val();
         } else {
@@ -35,22 +36,18 @@ const CardSet = {
     }
   },
 
-  getAllByUID: async (uid) => {
+  getAllBySetID: async (setid) => {
     try {
       const dbRef = ref(DB);
-      return await get(child(dbRef, `/cardsets/`)).then((snapshot) => {
+      return await get(child(dbRef, `/cards/`)).then((snapshot) => {
         if (snapshot.exists()) {
          
           const arr=[];
           Object.keys(snapshot.val()).map((key)=>{
             
-            if(snapshot.val()[key]['uid']===uid){
-              //console.log('eureka');
-              //console.log(snapshot.val());
-              let cardset = snapshot.val()[key]
-              //console.log(key);
-              cardset['id'] = key;
-              arr.push(cardset)
+            if(snapshot.val()[key]['setid']===setid){
+              console.log('eureka');
+              arr.push(snapshot.val()[key])
             }
           })
 
@@ -73,9 +70,10 @@ const CardSet = {
       console.log(id);
       console.log(data);
       const updates = {}
-      //updates['/cardsets/'+id+'/uid'] = data['uid']
-      updates['/cardsets/'+id+'/name'] = data['name']
-      updates['/cardsets/'+id+'/description'] = data['description']
+      updates['/cards/'+id+'/uid'] = data['uid']
+      updates['/cards/'+id+'/setid'] = data['setid']
+      updates['/cards/'+id+'/front'] = data['front']
+      updates['/cards/'+id+'/back'] = data['back']
       return update(ref(DB), updates)
     }
     catch (e) {
@@ -83,17 +81,8 @@ const CardSet = {
     }
   },
 
-  delete: async (id) => {
-    
-    try {
-      return remove(ref(DB, '/cardsets/'+id))
-    }
-    catch (e) {
-      console.log(e.message);
-    }
-
-   }
-
+  delete: async (id) => { }
+  
 };
 
-export default CardSet;
+export default Card;

@@ -13,6 +13,11 @@
 
 }
 
+.card-set > div > div > div {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .card-set>details>summary {
     list-style: '+';
     list-style-position: inside;
@@ -67,14 +72,22 @@
     transition: 1.5s;
     margin-bottom: 1rem;
     overflow: hidden;
+    width:100%;
 }
 
 .accordion-open {
-    height: 150px;
+    
     transition: 1.5s;
+    width:100%;
+    height: 350px;
 }
 
-.add-card {
+.cardset-controls{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.add-card, .edit-card-set-info {
     background-color: #008080;
     height: 48px;
     border: solid #e8e8e8 1px;
@@ -95,7 +108,7 @@
     font-size: 11pt;
 } */
 
-#add-card-modal {
+#add-card-modal , #delete-card-modal {
     display: none;
     position: fixed;
     top: 0px;
@@ -106,7 +119,7 @@
     z-index: 800;
 }
 
-#add-card-modal.open {
+#add-card-modal.open, #delete-card-modal.open {
     display: block;
 }
 
@@ -125,7 +138,24 @@
     z-index: 800;
 }
 
-#add-card-modal-close {
+
+
+#delete-card-modal-window {
+    position: fixed;
+    top: 30vh;
+    left: 50%;
+    height: 30vh;
+    min-width: 250px;
+    max-width: 500px;
+    padding: 1rem;
+    transform: translate(-50%, -0%);
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    background-color: #2e3131;
+    z-index: 800;
+}
+
+#add-card-modal-close, #delete-card-modal-close {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -138,7 +168,7 @@
     padding: 0.5rem;
 }
 
-#add-card-modal-content {
+#add-card-modal-content, #delete-card-modal-content {
     position: absolute;
     top: 60px;
     left: 50%;
@@ -147,7 +177,11 @@
     width: 100%;
 }
 
-#add-card-modal-action {
+#delete-card-modal-content > p {
+    text-align: center;
+}
+
+#add-card-modal-action, #delete-card-modal-action {
     display: flex;
     justify-content: space-evenly;
     margin-top: 50px;
@@ -158,7 +192,7 @@
     transform: translate(-50%, 0%);
 }
 
-#add-card-modal-affirm {
+#add-card-modal-affirm, #delete-card-modal-affirm {
     background-color: #008080;
     border: solid 1px #e8e8e8;
     border-radius: 50px;
@@ -170,7 +204,7 @@
     font-size: 1rem;
 }
 
-#add-card-modal-cancel {
+#add-card-modal-cancel, #delete-card-modal-cancel {
     background-color: #008080;
     border: solid 1px #e8e8e8;
     border-radius: 50px;
@@ -242,13 +276,16 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 75%;
+    height: 70%;
     width: 80%;
     border-radius: 25px;
     background-color: #2e3131;
     color: #e8e8e8;
     font-size: 16px;
     padding: 1rem;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    resize: none;
 }
 
 .noFocus {
@@ -260,13 +297,13 @@
     font-size: 22px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: 1s linear;
+    transition: 0.5s linear;
     font-weight: 500;
 }
 
 .inFocus {
     position: absolute;
-    top:7%;
+    top:5%;
     left:5%;
     transform: translate(0%, 0%);
     z-index: 875;
@@ -274,12 +311,8 @@
     font-weight: 900;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: 1s linear;
+    transition: 0.5s linear;
 }
-
-
-
-
 
 .switch-container {
     display: inline;
@@ -297,7 +330,6 @@
     position: relative;
     width: 96px;
     height: 48px;
-    /* padding: 0.25rem; */
     background-color: #e8e8e8;
     border: solid #e8e8e8 3px;
     border-radius: 50px;
@@ -371,3 +403,85 @@
     font-weight: bold;
     z-index: 945;
 }
+
+
+
+
+
+.cardList {
+    
+    height: 375px;
+    overflow-y: scroll;
+}
+
+
+
+
+#edit-set-modal {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height:100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 800;
+}
+
+#edit-set-modal.open {
+    display: block;
+}
+
+#edit-set-modal-window {
+    position: fixed;
+    top:50%;
+    left:50%;
+    min-width: 250px;
+    max-width: 500px;
+    padding: 1rem;
+    transform: translate(-50%,-50%);
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    background-color: #2e3131;
+}
+
+#edit-set-modal-close {
+    position: absolute;
+    top:5px;
+    right: 5px;
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    width: 50px;
+    height:50px;
+    padding: 0.5rem;
+}
+
+#edit-set-modal-content {
+    margin-top: 50px;
+}
+
+#edit-set-modal-action {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+
+}
+
+#edit-set-modal-affirm {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+}
+
+#edit-set-modal-cancel {
+    background-color: #008080;
+    border: solid 1px #e8e8e8;
+    border-radius: 50px;
+    color: #e8e8e8;
+    padding: 1rem;
+}
+
