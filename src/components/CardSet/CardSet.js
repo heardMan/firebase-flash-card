@@ -32,6 +32,10 @@ const CardSet = props => {
 
     const [cards, setCards] = useState(props.cards);
 
+    const [displayCard, setDisplayCard] = useState({id:'', front:'', back:''});
+
+    
+
     const createCard = () => {
 
         CardController
@@ -65,6 +69,10 @@ const CardSet = props => {
             .catch(e => console.log(e));
     }
 
+    const stepCardForward = () => {}
+
+    const stepCardBackward = () => {}
+
 
     useEffect(() => {
 
@@ -72,7 +80,13 @@ const CardSet = props => {
             console.log(props.id)
             CardController
                 .getAllBySetID(props.id)
-                .then(data => setCards(data))
+                .then(data => {
+                    setCards(data);
+                    if(data.length===0){
+                        return setDisplayCard({id:'', front:'', back:''})
+                    }
+                    return setDisplayCard(data[0]);
+                })
                 .catch(e => console.log(e));
 
         }
@@ -143,7 +157,7 @@ const CardSet = props => {
                                         <p>No cards yet</p>
                                         :
                                         <div className='cardList'>
-                                            {cards.map((card, i) =>
+                                            {/* {cards.map((card, i) =>
 
                                                 <Card
                                                     key={i} id={card.id}
@@ -152,7 +166,18 @@ const CardSet = props => {
                                                     update={updateCard}
                                                     delete={deleteCard} />
 
-                                            )}
+                                            )} */}
+
+
+
+                                             <Card
+                                                    id={displayCard.id}
+                                                    front={displayCard.front}
+                                                    back={displayCard.back}
+                                                    update={updateCard}
+                                                    delete={deleteCard} />
+
+
                                         </div>
 
                                 }

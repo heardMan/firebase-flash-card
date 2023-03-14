@@ -17,7 +17,7 @@ const Card = props => {
     const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
 
     return (
-        <>
+        <div className='card-small'>
             <form className='editcard'>
 
                 <div className={`edit-card-form${switchActive === true ? ' flipped' : ''}`}>
@@ -32,7 +32,8 @@ const Card = props => {
                     <div className='edit-card-form-2'>
 
                         <div className='edit-card-front'>
-                            <label className={`${focusFront === true || cardBack.length > 0 ? 'editCardInFocus' : 'editCardNotInFocus'}`}>front</label>
+
+                            <label className={`${focusFront === true || cardFront.length > 0 ? 'editCardInFocus' : 'editCardNotInFocus'}`}>front</label>
                             <textarea
                                 onFocus={() => setFocusFront(true)}
                                 onBlur={() => setFocusFront(false)}
@@ -43,6 +44,7 @@ const Card = props => {
                         </div>
 
                         <div className='edit-card-back'>
+
                             <label className={`${focusBack === true || cardBack.length > 0 ? 'editCardInFocus' : 'editCardNotInFocus'}`}>back</label>
                             <textarea
                                 onFocus={() => setFocusBack(true)}
@@ -78,6 +80,28 @@ const Card = props => {
                     {cardEditActive === true ? 'Save' : 'Update'}
                 </button>
 
+
+                <button
+                    className='prev-card'
+                    onClick={e => {
+                        e.preventDefault();
+                        if (cardEditActive === false) {
+                            //TODO: insert save/update fuction
+
+                            return setCardEditActive(true)
+
+                        }
+
+                        props.update(props.id, cardFront, cardBack)
+
+                        return setCardEditActive(false)
+
+                    }}>
+                    Previous Card
+                </button>
+
+
+
                 <div
                     className='edit-card-switch-container'
                     onClick={() => {
@@ -95,8 +119,27 @@ const Card = props => {
                             <p className='edit-card-switch-front'>front</p>
                         </div>
                     </div>
-                    <p className='edit-card-switch-back'>back</p>
+                    <p className={`${switchActive === true ? 'edit-card-switch-back-off' : 'edit-card-switch-back-on'}`}>back</p>
                 </div>
+
+                <button
+                    className='next-card'
+                    onClick={e => {
+                        e.preventDefault();
+                        if (cardEditActive === false) {
+                            //TODO: insert save/update fuction
+
+                            return setCardEditActive(true)
+
+                        }
+
+                        props.update(props.id, cardFront, cardBack)
+
+                        return setCardEditActive(false)
+
+                    }}>
+                    Next Card
+                </button>
 
 
 
@@ -133,7 +176,7 @@ const Card = props => {
                 </div>
 
             </div>
-        </>
+        </div>
     );
 };
 

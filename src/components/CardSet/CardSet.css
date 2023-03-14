@@ -4,15 +4,15 @@
     border-radius: 25px;
     padding: 1rem;
     margin-bottom: 1rem;
-
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
     text-align: center;
     max-width: 300px;
-
 }
-
+.card-set-list {
+    margin-bottom: 96px;
+}
 .card-set > div > div > div {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -138,8 +138,6 @@
     z-index: 800;
 }
 
-
-
 #delete-cardset-modal-window {
     position: fixed;
     top: 30vh;
@@ -216,11 +214,6 @@
     font-size: 1rem;
 }
 
-
-
-
-
-
 #addcard {
     position: relative;
     height: 100%;
@@ -230,7 +223,6 @@
     /* position: relative;
     height: 100%;
     perspective: 1000px; */
-
     height: 100%;
     border: 1px solid #f1f1f1;
     perspective: 1000px;
@@ -241,19 +233,14 @@
     /* border: solid 1px #e8e8e8; */
     width: 90%;
     transform: translate(5%, 0%);
-
     position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-
 }
 
 .flipped .add-card-form-2 {
     transform: rotateY(180deg) translate(-5%, 0%);
-
-
 }
-
 
 .add-card-front,
 .add-card-back {
@@ -350,8 +337,6 @@
     background-color: #008080;
 }
 
-
-
 .switch-toggle-off {
     position: absolute;
     top: 50%;
@@ -404,18 +389,15 @@
     z-index: 945;
 }
 
-
-
-
-
 .cardList {
-    
-    height: 375px;
-    overflow-y: scroll;
+    position: relative;
+    height: 400px;
+    width: 1500px;
+    transform: translate(-608px,0px);
+    overflow: hidden;
+    border: solid 1px #e8e8e8;
+    padding-top:10px;
 }
-
-
-
 
 #edit-set-modal {
     display: none;
