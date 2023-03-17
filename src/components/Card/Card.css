@@ -106,8 +106,8 @@
 .edit-card-switch-container {
     display: inline;
     position: absolute;
-    right: 50%;
-    bottom: 5px;
+    right: 108px;
+    bottom: 60px;
     z-index: 970;
     border-radius: 50px;
     user-select: none;
@@ -231,10 +231,10 @@
 
 .update-card {
     position: absolute;
-    right: 50%;
+    left: 36px;
     bottom: 62px;
     background-color: #008080;
-    width: 96px;
+    width: 48px;
     height: 48px;
     border: solid #e8e8e8 1px;
     color: #e8e8e8;
@@ -245,8 +245,8 @@
 
 .next-card {
     position: absolute;
-    right: 8%;
-    bottom: 38px;
+    right: 5px;
+    bottom: 62px;
     background-color: #008080;
     width: 48px;
     height: 48px;
@@ -258,8 +258,8 @@
 
 .prev-card {
     position: absolute;
-    left: 8%;
-    bottom: 38px;
+    left: 5px;
+    bottom: 62px;
     background-color: #008080;
     width: 48px;
     height: 48px;
@@ -267,6 +267,13 @@
     color: #e8e8e8;
     border-radius: 50px;
     z-index: 800;
+}
+
+.card-info {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translate(-50%,0%);
 }
 
 #delete-card-modal {

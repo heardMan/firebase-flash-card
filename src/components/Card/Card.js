@@ -7,14 +7,21 @@ const Card = props => {
     const [switchActive, setSwitchActive] = useState(false);
 
     const [focusFront, setFocusFront] = useState(false);
-    const [cardFront, setCardFront] = useState(props.front);
+    const [cardFront, setCardFront] = useState(props.displayCard.front);
 
 
     const [focusBack, setFocusBack] = useState(false);
-    const [cardBack, setCardBack] = useState(props.back);
+    const [cardBack, setCardBack] = useState(props.displayCard.back);
     const [cardEditActive, setCardEditActive] = useState(false);
 
     const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
+
+    useEffect(()=>{
+        if(props.displayCard!==undefined){
+            setCardFront(props.displayCard.front);
+            setCardBack(props.displayCard.back);
+        }
+    },[props.displayCard])
 
     return (
         <div className='card-small'>
@@ -85,20 +92,18 @@ const Card = props => {
                     className='prev-card'
                     onClick={e => {
                         e.preventDefault();
-                        if (cardEditActive === false) {
-                            //TODO: insert save/update fuction
-
-                            return setCardEditActive(true)
-
-                        }
-
-                        props.update(props.id, cardFront, cardBack)
-
-                        return setCardEditActive(false)
+                        
+                        console.log('previous card');
+                        props.last();
+                        
 
                     }}>
                     Previous Card
                 </button>
+
+                <div className='card-info'>
+                    {props.idx+1} / {props.cardCount}
+                </div>
 
 
 
@@ -126,16 +131,8 @@ const Card = props => {
                     className='next-card'
                     onClick={e => {
                         e.preventDefault();
-                        if (cardEditActive === false) {
-                            //TODO: insert save/update fuction
-
-                            return setCardEditActive(true)
-
-                        }
-
-                        props.update(props.id, cardFront, cardBack)
-
-                        return setCardEditActive(false)
+                        console.log('next card');
+                        props.next()
 
                     }}>
                     Next Card

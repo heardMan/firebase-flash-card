@@ -18,7 +18,7 @@ const CardSet = props => {
     const [newCardFront, setNewCardFront] = useState('');
     const [newCardBack, setNewCardBack] = useState('');
 
-    const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
+    const [deleteCardSetModalOpen, setDeleteCardSetModalOpen] = useState(false);
 
     const [switchActive, setSwitchActive] = useState(false);
 
@@ -30,11 +30,9 @@ const CardSet = props => {
     const [name, setName] = useState(props.name);
     const [description, setDescription] = useState(props.description);
 
-    const [cards, setCards] = useState(props.cards);
+    const [cards, setCards] = useState([]);
 
-    const [displayCard, setDisplayCard] = useState({id:'', front:'', back:''});
-
-    
+    const [displayCard, setDisplayCard] = useState({id:'',front:'',back:''});
 
     const createCard = () => {
 
@@ -69,9 +67,36 @@ const CardSet = props => {
             .catch(e => console.log(e));
     }
 
-    const stepCardForward = () => {}
+    const nextCard = () => {
 
-    const stepCardBackward = () => {}
+        console.log('next card');
+
+        const currentIndex = cards.indexOf(displayCard);
+
+        let nextIndex = currentIndex + 1
+
+        if (nextIndex === cards.length) {
+            nextIndex = 0
+        }
+        console.log(nextIndex)
+        console.log(cards[nextIndex])
+
+        return setDisplayCard(cards[nextIndex])
+    }
+
+    const lastCard = () => {
+        console.log('last card');
+        const currentIndex = cards.indexOf(displayCard);
+
+        let lastIndex = currentIndex - 1
+
+        if (currentIndex === 0) {
+            lastIndex = cards.length-1
+        }
+
+        return setDisplayCard(cards[lastIndex])
+
+    }
 
 
     useEffect(() => {
@@ -82,14 +107,15 @@ const CardSet = props => {
                 .getAllBySetID(props.id)
                 .then(data => {
                     setCards(data);
-                    if(data.length===0){
-                        return setDisplayCard({id:'', front:'', back:''})
+                    if (data.length === 0) {
+                        return setDisplayCard({ id: '', front: '', back: '' })
                     }
                     return setDisplayCard(data[0]);
                 })
                 .catch(e => console.log(e));
 
         }
+        console.log(props)
     }, [])
 
 
@@ -160,22 +186,33 @@ const CardSet = props => {
                                             {/* {cards.map((card, i) =>
 
                                                 <Card
-                                                    key={i} id={card.id}
-                                                    front={card.front}
-                                                    back={card.back}
-                                                    update={updateCard}
-                                                    delete={deleteCard} />
+                                                id={displayCard.id}
+                                                front={displayCard.front}
+                                                back={displayCard.back}
+                                                update={updateCard}
+                                                delete={deleteCard}
+                                                idx={cards.indexOf(displayCard)}
+                                                cardCount={cards.length}
+                                                next={nextCard}
+                                                last={lastCard} />
 
                                             )} */}
 
 
 
-                                             <Card
-                                                    id={displayCard.id}
-                                                    front={displayCard.front}
-                                                    back={displayCard.back}
-                                                    update={updateCard}
-                                                    delete={deleteCard} />
+                                            <Card
+                                                // id={displayCard.id}
+                                                // front={displayCard.front}
+                                                // back={displayCard.back}
+                                                displayCard={displayCard}
+                                                update={updateCard}
+                                                delete={deleteCard}
+                                                idx={cards.indexOf(displayCard)}
+                                                cardCount={cards.length}
+                                                next={nextCard}
+                                                last={lastCard}
+                                            />
+
 
 
                                         </div>
@@ -185,7 +222,7 @@ const CardSet = props => {
                         </div>
                     </div>
 
-                    <button className='delete-card-set' onClick={() => setDeleteCardModalOpen(true)}>delete</button>
+                    <button className='delete-card-set' onClick={() => setDeleteCardSetModalOpen(true)}>delete</button>
 
                 </div>
             </div>
@@ -285,11 +322,14 @@ const CardSet = props => {
 
 
 
-            <div id='delete-cardset-modal' className={deleteCardModalOpen === true ? 'open' : ''}>
+            <div id='delete-cardset-modal' className={deleteCardSetModalOpen === true ? 'open' : ''}>
 
                 <div id='delete-cardset-modal-window'>
 
-                    <button id='delete-cardset-modal-close' onClick={e => setDeleteCardModalOpen(false)}>x</button>
+                    <button id='delete-cardset-modal-close' onClick={e => {
+                        e.preventDefault();
+                        return setDeleteCardSetModalOpen(false)
+                    }}>x</button>
 
                     <div id='delete-cardset-modal-content'>
 
@@ -300,7 +340,7 @@ const CardSet = props => {
                         <button id='delete-cardset-modal-affirm' onClick={e => {
                             e.preventDefault();
                             console.log('deleting...')
-                            setDeleteCardModalOpen(false);
+                            setDeleteCardSetModalOpen(false);
                             props.delete(props.id).catch(e => console.log(e))
                             props.refresh()
                             // CardSetController
@@ -308,7 +348,7 @@ const CardSet = props => {
                             //     .catch(e => console.log(e))
                         }}>Delete</button>
                         <button id='delete-cardset-modal-cancel' onClick={e => {
-                            setDeleteCardModalOpen(false);
+                            setDeleteCardSetModalOpen(false);
                             // setName('');
                             // setDescription('');
                         }}>Go Back</button>

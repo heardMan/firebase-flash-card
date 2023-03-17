@@ -103,7 +103,7 @@ const CardSetManager = () => {
                                                 id={(cardset.id)}
                                                 name={(cardset.name)}
                                                 description={(cardset.description)}
-                                                cards={(cardset.cards)}
+                                                //cards={(cardset.cards)}
                                                 updateInfo={updateCardSetInfo}
                                                 delete={deleteCardSet}
                                             />
