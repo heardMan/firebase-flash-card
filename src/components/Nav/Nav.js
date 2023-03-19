@@ -52,9 +52,9 @@ const Nav = () => {
                         ''
                         :
                         <>
-                            <div className='menu-item' onClick={toggle}>
+                            {/* <div className='menu-item' onClick={toggle}>
                                 <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>
-                            </div>
+                            </div> */}
                             <div className='menu-item' onClick={toggle}>
                                 <Link to='./cardsets'>{/*<FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup}/>*/}Card Sets</Link>
                             </div>

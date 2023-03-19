@@ -1,8 +1,8 @@
 .account-info {
     position: relative;
-    border: solid #e8e8e8 1px;
+    border: solid #e8e8e8 0px;
     padding: 1rem;
-    margin: 1rem auto 1rem auto;
+    margin: 1rem auto 72px auto;
     max-width: 450px;
     z-index: 700;
     overflow: hidden;
@@ -39,11 +39,11 @@
 }
 
 .account-edit {
-    border: solid white 1px;
+    border: solid white 0px;
     position: absolute;
     bottom: 50%;
     right: 50%;
-    transform: translate(50%, 70%);
+    transform: translate(40%, 70%);
     border-radius: 50px;
     width: 48px;
     height: 48px;
@@ -55,10 +55,18 @@
     padding: 1rem;
     border-radius: 50px;
     font-size: 1.25rem;
-    color: #e8e8e8;
-    background-color: #008080;
-    border: solid 1px #e8e8e8;
+    color: #C0392B;
+    background-color: transparent;
+    border: solid 3px #C0392B;
     margin-top: 1rem;
+    transition: 0.5s;
+    font-weight: bolder;
+}
+
+#delete-account:hover {
+    background-color: #C0392B;
+    color: #e8e8e8;
+    transition: 0.5s;
 }
 
 .reauthModal {
@@ -91,14 +99,14 @@
 
 .close-modal {
     position: absolute;
-    top:1rem;
-    right:1rem;
+    top: 1rem;
+    right: 1rem;
     background-color: transparent;
-    color:#e8e8e8;
+    color: #e8e8e8;
     border: solid 1px #e8e8e8;
     border-radius: 30px;
-    width:36px;
-    height:36px;
+    width: 36px;
+    height: 36px;
 }
 
 .form-group {
@@ -133,7 +141,7 @@
 
 .deleteModal.open {
     display: block;
-    z-index: 900;
+    z-index: 910;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -145,42 +153,95 @@
 .deleteModal-content {
     position: relative;
     background-color: #2e3131;
-    width: 90%;
-    margin-top: 25vh;
+    width: 80%;
+    margin-top: 15vh;
     margin-left: auto;
     margin-right: auto;
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 1rem;
     border-radius: 25px;
     max-width: 350px;
 }
 
+.close-delete-modal {
+    position: absolute;
+    top:-25px;
+    right:5px;
+    margin: 2rem auto 1rem auto;
+    padding: 0rem;
+    width: 48px;
+    height: 48px;
+    border: solid 0px rgba(0, 0, 0, 0.5);
+    /* border: solid 1px #e8e8e8; */
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #e8e8e8;
+    transition: 0.5s;
+}
+
+.close-delete-modal:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
+.close-delete-modal:active {
+    box-shadow: none;
+    border: none;
+    transition: 0s;
+}
+
 .deleteModal-text {
     margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
-.deleteModal-action {
-    display: flex;
-    justify-content: center;
-}
+
 
 .deleteModal-action>button {
     display: block;
-    margin: 2rem auto 1rem auto;
+    margin: 0rem auto 1rem auto;
     padding: 1rem;
-    width: 95px;
-    border: solid 1px #e8e8e8;
+    width: 80%;
+   
     border-radius: 50px;
-    background-color: #008080;
     font-size: 1rem;
+    
+}
+
+.go-back-btn {
+    background-color: #009688;
+    border:none;
+    font-weight: bolder;
     color: #e8e8e8;
+}
+
+.delete-account-btn {
+    background-color: transparent;
+    border: solid 3px #C0392B;
+    color: #C0392B;
+    font-weight: bolder;
+    transition: 0.5s;
+}
+
+.delete-account-btn:hover {
+    color: #e8e8e8;
+    background-color: #C0392B;
+    transition: 0.5s;
+}
+
+.delete-account-btn:active {
+    color: #2e3131;
+    background-color: #C0392B;
+    transition: 0.5s;
 }
 
 .email-verified {
     margin-left: 15%;
     margin-right: auto;
     margin-top: -0.5rem;
-    width:70%;
+    width: 70%;
 }
 
 .verified {
@@ -189,21 +250,23 @@
 
 .unverified {
     display: inline;
-    color: red;
+    color: #D50000;
     margin-right: 1rem;
 }
 
 #verify-email {
+    margin-top: 5px;
     border-radius: 25px;
     border: solid 1px #e8e8e8;
-    color:#e8e8e8;
+    color: #e8e8e8;
     background-color: transparent;
     transition: 0.5s;
 }
-    
+
 #verify-email:hover {
     background-color: #008080;
     transition: 0.5s;
+    border: solid 1px #008080;
 }
 
 #verify-email:active {

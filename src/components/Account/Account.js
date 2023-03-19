@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Account.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faFloppyDisk, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faFloppyDisk, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Account = () => {
 
@@ -26,7 +26,7 @@ const Account = () => {
 
     const navigate = useNavigate();
 
-    const [aUsr, setAUsr] = useState('');
+    
     const [fName, setFName] = useState('');
     const [fNameActive, setFNameActive] = useState(false);
     const [lName, setLName] = useState('');
@@ -36,6 +36,7 @@ const Account = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordActive, setPasswordActive] = useState(false);
+    const [trashIconColor, setTrashIconColor] = useState('#C0392B');
 
     //const [reauthEmail, setReauthEmail] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
@@ -127,14 +128,22 @@ const Account = () => {
 
                 <div className='account-field'>
                     <div className='account-input'>
-                        <TextInput label={'first name'} value={fName} onChange={setFName} disabled={fNameActive === true ? false : true} />
+                        <TextInput 
+                        label={'first name'} 
+                        value={fName} 
+                        onChange={setFName} 
+                        onBlur={e=>{
+                            e.preventDefault()
+                            return setFName(authUser.profile.firstName)
+                        }} 
+                        disabled={fNameActive === true ? false : true} />
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => fNameActive === false ? setFNameActive(true) : updateUser()}>
-                            {fNameActive === false ? 
-                            <FontAwesomeIcon title='Edit First Name' color='#e8e8e8' size='2x' icon={faPen}/> 
-                            : 
-                            <FontAwesomeIcon title='Save First Name' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            {fNameActive === false ?
+                                <FontAwesomeIcon title='Edit First Name' color='#e8e8e8' size='2x' icon={faPen} />
+                                :
+                                <FontAwesomeIcon title='Save First Name' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -142,29 +151,41 @@ const Account = () => {
 
                 <div className='account-field'>
                     <div className='account-input'>
-                        <TextInput label={'last name'} value={lName} onChange={setLName} disabled={lNameActive === true ? false : true} />
+                        <TextInput 
+                        label={'last name'} 
+                        value={lName} 
+                        onChange={setLName} 
+                        disabled={lNameActive === true ? false : true} />
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => lNameActive === false ? setLNameActive(true) : updateUser()}>
                             {lNameActive === false ?
-                             <FontAwesomeIcon title='Edit Last Name' color='#e8e8e8' size='2x' icon={faPen}/> 
-                             : 
-                             <FontAwesomeIcon title='Save Last Name' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
-                             }
+                                <FontAwesomeIcon title='Edit Last Name' color='#e8e8e8' size='2x' icon={faPen} />
+                                :
+                                <FontAwesomeIcon title='Save Last Name' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
+                            }
                         </button>
                     </div>
                 </div>
 
                 <div className='account-field'>
                     <div className='account-input'>
-                        <EmailInput label={'email'} value={email} onChange={setEmail} disabled={emailActive === true ? false : true} />
+                        <EmailInput 
+                        label={'email'} 
+                        value={email} 
+                        onChange={setEmail} 
+                        disabled={emailActive === true ? false : true} 
+                        onBlur={e=>{
+                            e.preventDefault()
+                            return setEmail(authUser.profile.email)
+                        }} />
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => emailActive === false ? setEmailActive(true) : updateUser()}>
-                            {emailActive === false ? 
-                            <FontAwesomeIcon title='Edit Email' color='#e8e8e8' size='2x' icon={faPen}/> 
-                            : 
-                            <FontAwesomeIcon title='Save Email' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            {emailActive === false ?
+                                <FontAwesomeIcon title='Edit Email' color='#e8e8e8' size='2x' icon={faPen} />
+                                :
+                                <FontAwesomeIcon title='Save Email' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -205,10 +226,10 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => passwordActive === false ? setPasswordActive(true) : updateUser()}>
-                            {passwordActive === false ? 
-                            <FontAwesomeIcon title='Edit Password' color='#e8e8e8' size='2x' icon={faPen}/> 
-                            : 
-                            <FontAwesomeIcon title='Save Password' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            {passwordActive === false ?
+                                <FontAwesomeIcon title='Edit Password' color='#e8e8e8' size='2x' icon={faPen} />
+                                :
+                                <FontAwesomeIcon title='Save Password' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -224,7 +245,34 @@ const Account = () => {
 
                 <div className='account-field'>
 
-                    <button id='delete-account' onClick={() => setDeleteModalOpen(true)}> <FontAwesomeIcon title='Delete Account' color='#e8e8e8' size='1x' icon={faTrash}/> Delete My Account</button>
+                    <button id='delete-account' 
+                    onClick={() => setDeleteModalOpen(true)}
+                    onMouseOver={e=>{
+                        e.preventDefault()
+                        setTrashIconColor('#e8e8e8')
+                    }}
+                    onMouseLeave={e=>{
+                        e.preventDefault()
+                        setTrashIconColor('#C0392B')
+                    }}
+                    onMouseDown={e=>{
+                        e.preventDefault()
+                        setTrashIconColor('#e8e8e8')
+                    }}
+                    onMouseUp={e=>{
+                        e.preventDefault()
+                        setTrashIconColor('#C0392B')
+                    }}
+                    > 
+                    <FontAwesomeIcon 
+                    title='Delete Account' 
+                    color={trashIconColor} 
+                    size='1x' 
+                    icon={faTrash} 
+                    style={{transition:'0.5s',marginRight:'0.5rem'}}
+                     /> 
+                    Delete My Account
+                    </button>
                 </div>
 
 
@@ -259,15 +307,16 @@ const Account = () => {
                 <div className='deleteModal-content'>
                     <button className='close-delete-modal' onClick={e => {
                         setDeleteModalOpen(false)
-                    }}>x</button>
+                    }}><FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='2x' icon={faXmark} /> </button>
                     <div className='deleteModal-text'>
                         <h3>You are about to delete your account.</h3>
                         <h3>This action cannot be reversed.</h3>
                         <h3>Do you want to continue?</h3>
                     </div>
                     <div className='deleteModal-action'>
-                        <button onClick={() => setDeleteModalOpen(false)}>Go Back</button>
-                        <button onClick={deleteUser} >Delete Account</button>
+                        <button className='delete-account-btn' onClick={deleteUser} >Delete Account</button>
+                        <button className='go-back-btn' onClick={() => setDeleteModalOpen(false)}>Go Back</button>
+
                     </div>
 
 
