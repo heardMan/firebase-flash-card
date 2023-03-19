@@ -12,17 +12,20 @@ import Header from './components/Header/Header.js';
 import Contact from './components/Contact/Contact.js';
 import CardSetManager from './components/CardSetManager/CardSetManager.js';
 import FAQ from './components/FAQ/FAQ.js';
+import Home from './components/Home/Home.js';
+import GitHub from './components/GitHub/GitHub.js';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      
+
       <main>
         <AuthContentextProvider>
-        <Nav />
+          <Nav />
           <Routes>
-            <Route path='/' element={
+            <Route path='/' element={<Home />} />
+            <Route path='/account' element={
               <ProtectedRoute>
                 <Account />
               </ProtectedRoute>
@@ -36,6 +39,7 @@ function App() {
             <Route path='/signin' element={<SignIn />} />
             <Route path='/reset' element={<PasswordReset />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/' element={<GitHub />} />
             <Route path='/faq' element={<FAQ />} />
             <Route path='/*' element={<Navigate to="/" replace={true} />} />
           </Routes>

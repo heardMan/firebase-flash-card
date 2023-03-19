@@ -5,6 +5,9 @@ import TextInput from '../TextInput/TextInput.js';
 import CardSet from '../CardSet/CardSet.js';
 import TextArea from '../TextArea/TextArea';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import './CardSetManager.css';
 
 const CardSetManager = () => {
@@ -71,7 +74,7 @@ const CardSetManager = () => {
                                 setAddSetModalOpen(false)
                         }
                     >
-                        New Card Set +
+                        <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'med'} icon={faPlus} /> Card Set
                     </button>
 
 
@@ -133,7 +136,7 @@ const CardSetManager = () => {
             <div id='add-set-modal' className={addSetModalOpen === true ? 'open' : ''}>
 
                 <div id='add-set-modal-window'>
-                    <button id='add-set-modal-close' onClick={e => setAddSetModalOpen(false)}>x</button>
+                    <button id='add-set-modal-close' onClick={e => setAddSetModalOpen(false)}><FontAwesomeIcon title='Close Add Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
                     <div id='add-set-modal-content'>
 
                         <form id='addset'>

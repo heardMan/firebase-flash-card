@@ -9,6 +9,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './Account.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faFloppyDisk, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 const Account = () => {
 
     const {
@@ -128,7 +131,11 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => fNameActive === false ? setFNameActive(true) : updateUser()}>
-                            {fNameActive === false ? 'Edit' : 'Save'}
+                            {fNameActive === false ? 
+                            <FontAwesomeIcon title='Edit First Name' color='#e8e8e8' size='2x' icon={faPen}/> 
+                            : 
+                            <FontAwesomeIcon title='Save First Name' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            }
                         </button>
                     </div>
                 </div>
@@ -139,7 +146,11 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => lNameActive === false ? setLNameActive(true) : updateUser()}>
-                            {lNameActive === false ? 'Edit' : 'Save'}
+                            {lNameActive === false ?
+                             <FontAwesomeIcon title='Edit Last Name' color='#e8e8e8' size='2x' icon={faPen}/> 
+                             : 
+                             <FontAwesomeIcon title='Save Last Name' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                             }
                         </button>
                     </div>
                 </div>
@@ -150,7 +161,11 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => emailActive === false ? setEmailActive(true) : updateUser()}>
-                            {emailActive === false ? 'Edit' : 'Save'}
+                            {emailActive === false ? 
+                            <FontAwesomeIcon title='Edit Email' color='#e8e8e8' size='2x' icon={faPen}/> 
+                            : 
+                            <FontAwesomeIcon title='Save Email' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            }
                         </button>
                     </div>
                 </div>
@@ -190,7 +205,11 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button className='account-edit' onClick={e => passwordActive === false ? setPasswordActive(true) : updateUser()}>
-                            {passwordActive === false ? 'Edit' : 'Save'}
+                            {passwordActive === false ? 
+                            <FontAwesomeIcon title='Edit Password' color='#e8e8e8' size='2x' icon={faPen}/> 
+                            : 
+                            <FontAwesomeIcon title='Save Password' color='#e8e8e8' size='2x' icon={faFloppyDisk}/>
+                            }
                         </button>
                     </div>
                 </div>
@@ -205,7 +224,7 @@ const Account = () => {
 
                 <div className='account-field'>
 
-                    <button id='delete-account' onClick={() => setDeleteModalOpen(true)}> Delete Account </button>
+                    <button id='delete-account' onClick={() => setDeleteModalOpen(true)}> <FontAwesomeIcon title='Delete Account' color='#e8e8e8' size='1x' icon={faTrash}/> Delete My Account</button>
                 </div>
 
 
