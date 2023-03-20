@@ -118,7 +118,7 @@
 
 .reauthModal.open {
     display: block;
-    z-index: 900;
+    z-index: 910;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -137,6 +137,32 @@
     padding: 2rem 1rem 2rem 1rem;
     border-radius: 25px;
     max-width: 350px;
+}
+
+.reauth-form {
+    margin-top: 24px;
+}
+
+#reauth-submit {
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
+    color: #e8e8e8;
+    font-weight: bold;
+    font-size: large;
+    width: 120px;
+    height: 54px;
+    transform: scale(1);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+#reauth-submit:hover{
+    transform: scale(1.01);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65);
+}
+
+#reauth-submit:active{
+    transform: scale(0.99);
+    box-shadow: none;
 }
 
 .close-modal {
@@ -204,7 +230,7 @@
     max-width: 350px;
 }
 
-.close-delete-modal {
+.close-delete-modal, .close-reauth-modal {
     position: absolute;
     top:-25px;
     right:5px;
@@ -221,13 +247,13 @@
     transition: 0.5s;
 }
 
-.close-delete-modal:hover {
+.close-delete-modal:hover, .close-reauth-modal:hover {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
     border: solid 1px rgba(0, 0, 0, 0.5);
     transition: 0.5s;
 }
 
-.close-delete-modal:active {
+.close-delete-modal:active, .close-reauth-modal:active {
     box-shadow: none;
     border: none;
     transition: 0s;

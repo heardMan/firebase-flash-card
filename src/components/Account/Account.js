@@ -524,9 +524,11 @@ const Account = () => {
             {/* Reauthorization modal */}
             <div className={modalOpen === true ? 'reauthModal open' : 'reauthModal'}>
                 <div className='reauthModal-content'>
-                    <button className='close-modal' onClick={e => {
+                    <button className='close-reauth-modal' onClick={e => {
                         setModalOpen(false)
-                    }}>x</button>
+                    }}>
+                        <FontAwesomeIcon title='Close Reauthorization Modal' color='#e8e8e8' size='2x' icon={faXmark} />
+                    </button>
                     <div className='reauth-form'>
                         <h3>Before you perform this action, you need to enter your current password</h3>
                         <div className='form-group'>
@@ -534,6 +536,7 @@ const Account = () => {
                         </div>
                         <div className='form-group'>
                             <button
+                            id='reauth-submit'
                                 onClick={async e => {
                                     e.preventDefault();
                                     const newPAss = await reAuthenticateUser(currentPassword)
