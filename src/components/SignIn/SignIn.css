@@ -11,10 +11,19 @@
     padding: 0rem 1rem 1rem 1rem;
 }
 
-#sign-in .form-group .validate-text {
+#sign-in .form-group .validate-text-container {
     position: absolute;
-    bottom: 0%;
-    left: 12%;
+    bottom: -16px;
+    left: 15%;
+    width: 80%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.validate-text-container .validate-text {
+    position: relative;
+    width: 80%;
     font-size: 0.75rem;
     margin: 0px;
     color: #D50000;

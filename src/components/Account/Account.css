@@ -30,6 +30,16 @@
     transform: translate(-7%, 0%);
 }
 
+.account-field .validate-text {
+    position: absolute;
+    bottom: -16px;
+    left: 15%;
+    font-size: 0.75rem;
+    margin: 0px;
+    color: #D50000;
+    
+}
+
 .account-action {
     /* border: solid white 1px; */
     position: relative;
@@ -39,16 +49,48 @@
 }
 
 .account-edit {
-    border: solid white 0px;
     position: absolute;
     bottom: 50%;
     right: 50%;
-    transform: translate(40%, 70%);
+    transform: translate(40%, 70%) scale(1);
     border-radius: 50px;
     width: 48px;
     height: 48px;
-    background-color: #008080;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
     color: #e8e8e8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.account-save {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(40%, 70%) scale(1);
+    border-radius: 50px;
+    width: 48px;
+    height: 48px;
+    background-color: #616161;
+    border: solid 1px #9E9E9E;
+    color: #e8e8e8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.account-action .active {
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
+}
+
+
+.account-edit:hover {
+    transform:translate(40%, 70%) scale(1.02);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65);
+}
+
+.account-edit:active {
+    transform:translate(40%, 70%) scale(0.98);
+    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); */
+    box-shadow: none;
 }
 
 #delete-account {
@@ -264,13 +306,15 @@
 }
 
 #verify-email:hover {
-    background-color: #008080;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
     transition: 0.5s;
-    border: solid 1px #008080;
+    border: solid 1px #00897B;
 }
 
 #verify-email:active {
-    background-color: #008080;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
 }
 
 
@@ -319,7 +363,8 @@
     width: 95px;
     border: solid 1px #e8e8e8;
     border-radius: 50px;
-    background-color: #008080;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
     font-size: 1rem;
     color: #e8e8e8;
 }

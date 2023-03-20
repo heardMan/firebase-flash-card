@@ -74,7 +74,7 @@ const CardSetManager = () => {
                                 setAddSetModalOpen(false)
                         }
                     >
-                        <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'med'} icon={faPlus} /> Card Set
+                        <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'lg'} icon={faPlus} /> Card Set
                     </button>
 
 

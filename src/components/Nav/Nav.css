@@ -245,6 +245,13 @@
     .fab {
         top: 0.5rem;
         box-shadow: none;
+        border: solid #00897B 1px;
+        /* border: solid #80CBC4 1px; */
+    }
+
+    .fab:hover {
+        transform: scale(1);
+        border: solid #80CBC4 1px;
     }
 
     .fab:active {

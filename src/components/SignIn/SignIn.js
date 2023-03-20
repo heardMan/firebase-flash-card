@@ -38,6 +38,7 @@
  * @returns { <SignIn /> }  - The JSX SignIn element to be rendered
  */
 
+import { set } from 'firebase/database';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/Auth.js';
@@ -49,9 +50,11 @@ const SignIn = () => {
 
     const [email, setEmail] = useState('');
     const [emailValid1, setEmailValid1] = useState('');
+    const [invalidEmail, setInvalidEmail] = useState('');
 
     const [password, setPassword] = useState('');
     const [passwordValid, setPasswordValid] = useState('');
+    const [wrongPassword, setWrongPassword] = useState('');
 
     const [allowSubmit, setAllowSubmit] = useState(false);
 
@@ -68,10 +71,22 @@ const SignIn = () => {
 
             console.log('logging')
             try {
-                await logIn(email, password);
+                await logIn(email, password).then(()=>{
+                    setWrongPassword('')
+                    setInvalidEmail('')
+                });
             }
             catch (e) {
-                console.log(e.message);
+                console.log(e);
+
+                if(e.message==='Firebase: Error (auth/wrong-password).'){
+                    setWrongPassword('Incorrect password provided.')
+                }
+
+                if(e.message==='Firebase: Error (auth/invalid-email).'){
+                    setInvalidEmail('Sorry, we couldn\'t find a user with that email addres.s' )
+                }
+                
             }
         }
 
@@ -126,13 +141,25 @@ const SignIn = () => {
             </div>
 
             <div className='form-group'>
-                <EmailInput label={'email'} value={email} onChange={setEmail} disabled={false} />
-                <p className='validate-text'> {emailValid1} </p>
+                <EmailInput label={'email'} value={email} onChange={email=>{
+                    setEmail(email)
+                    setInvalidEmail('')
+                    }} disabled={false} />
+                <div className='validate-text-container'>
+                {emailValid1===''?'':<div className='validate-text'> {emailValid1} </div>}
+                {invalidEmail===''?'':<div className='validate-text'> {invalidEmail} </div>}
+                </div>
             </div>
 
             <div className='form-group'>
-                <PasswordInput label={'password'} value={password} onChange={setPassword} disabled={false} />
-                <p className='validate-text'> {passwordValid} </p>
+                <PasswordInput label={'password'} value={password} onChange={password=>{
+                    setPassword(password)
+                    setWrongPassword('')
+                }} disabled={false} />
+                <div className='validate-text-container'>
+                {passwordValid===''?'':<p className='validate-text'> {passwordValid} </p>}
+                {wrongPassword===''?'':<p className='validate-text'> {wrongPassword} </p>}
+                </div>
             </div>
 
             <div className='form-group'>
