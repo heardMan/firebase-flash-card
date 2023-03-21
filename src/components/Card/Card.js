@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPlus, faCheck, faChevronRight, faChevronLeft, faFloppyDisk, faPen } from '@fortawesome/free-solid-svg-icons';
+
 import './Card.css';
 
 const Card = props => {
@@ -33,7 +36,7 @@ const Card = props => {
                         e.preventDefault();
                         return setDeleteCardModalOpen(true)
                     }}>
-                        x
+                        <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
                     </button>
 
                     <div className='edit-card-form-2'>
@@ -84,7 +87,7 @@ const Card = props => {
                         return setCardEditActive(false)
 
                     }}>
-                    {cardEditActive === true ? 'Save' : 'Update'}
+                    {cardEditActive === true ? <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faFloppyDisk} /> : <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faPen} />}
                 </button>
 
 
@@ -98,7 +101,7 @@ const Card = props => {
                         
 
                     }}>
-                    Previous Card
+                    <FontAwesomeIcon title='Last Card' color={'#e8e8e8'} size={'2x'} icon={faChevronLeft} />
                 </button>
 
                 <div className='card-info'>
@@ -135,7 +138,7 @@ const Card = props => {
                         props.next()
 
                     }}>
-                    Next Card
+                    <FontAwesomeIcon title='Next Card' color={'#e8e8e8'} size={'2x'} icon={faChevronRight} />
                 </button>
 
 

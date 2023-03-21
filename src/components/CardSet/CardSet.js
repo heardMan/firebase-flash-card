@@ -6,6 +6,10 @@ import Card from '../Card/Card'
 // import edit from './edit.svg';
 import CardController from '../../controllers/Card.js';
 import chevron from './chevron_left.svg'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPlus, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import './CardSet.css';
 
 
@@ -144,7 +148,7 @@ const CardSet = props => {
                                 return setAddCardModalOpen(false)
 
                             }}>
-                            Add New Card +
+                            <FontAwesomeIcon title='Add Card'  color={'#e8e8e8'} size={'1x'} icon={faPlus} /> Card
                         </button>
 
                         <button
@@ -158,14 +162,15 @@ const CardSet = props => {
                                 return setEditSetModalOpen(false)
 
                             }}>
-                            Edit Card Set
+                            <FontAwesomeIcon title='Edit Set Info'  color={'#e8e8e8'} size={'1x'} icon={faPen} /> Info 
                         </button>
 
                     </div>
 
                     {/* control button */}
                     <button className='accordion-toggle' onClick={e => { open === false ? setOpen(true) : setOpen(false) }}>
-                        <img alt='toggle icon' className={`accordion-toggle-icon ${open === true ? 'accordion-toggle-open' : ''}`} src={chevron} />
+                        {/* <img alt='toggle icon' className={`accordion-toggle-icon ${open === true ? 'accordion-toggle-open' : ''}`} src={chevron} /> */}
+                        <FontAwesomeIcon title='View Cards'  rotation={`${open === true ? '90' : '0'}`} color={'#e8e8e8'} size={'3x'} icon={faChevronRight} />
                     </button>
 
 
@@ -225,7 +230,9 @@ const CardSet = props => {
                         </div>
                     </div>
 
-                    <button className='delete-card-set' onClick={() => setDeleteCardSetModalOpen(true)}>delete</button>
+                    <button className='delete-card-set' onClick={() => setDeleteCardSetModalOpen(true)}>
+                    <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                    </button>
 
                 </div>
             </div>

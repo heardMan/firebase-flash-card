@@ -6,7 +6,7 @@ import CardSet from '../CardSet/CardSet.js';
 import TextArea from '../TextArea/TextArea';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import './CardSetManager.css';
 
@@ -168,12 +168,16 @@ const CardSetManager = () => {
 
                                 })
                                 .catch(e => console.log(e))
-                        }}>Create Set</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='3x' icon={faCheck} />
+                        </button>
                         <button id='add-set-modal-cancel' onClick={e => {
                             setAddSetModalOpen(false);
                             setName('');
                             setDescription('');
-                        }}>Cancel</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='3x' icon={faXmark} />
+                        </button>
                     </div>
                 </div>
 

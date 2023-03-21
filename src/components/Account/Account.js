@@ -487,8 +487,10 @@ const Account = () => {
             <div className={verifyModalOpen === true ? 'verifyModal open' : 'verifyModal'}>
                 <div className='verifyModal-content'>
                     <button className='close-verify-modal' onClick={e => {
-                        setDeleteModalOpen(false)
-                    }}>x</button>
+                        setVerifyModalOpen(false)
+                    }}>
+                        <FontAwesomeIcon title='Close Verify Email Modal' color='#e8e8e8' size='2x' icon={faXmark} />
+                    </button>
                     <div className='verifyModal-text'>
                         <h3>A verification link has been sent to your email</h3>
                     </div>
