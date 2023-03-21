@@ -13,11 +13,11 @@
 
 #add-set>button {
     padding: 1rem;
-    border: solid 1px #e8e8e8;
     border-radius: 50px;
     display: block;
     margin: 1rem auto 1rem auto;
-    background-color: #008080;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
     color: #e8e8e8;
     font-size: 11pt;
 }
@@ -95,10 +95,14 @@
     margin-top: 50px;
 }
 
+#addset > .form-group:first-of-type {
+    margin-bottom: 45px;
+}
+
 #add-set-modal-action {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 50px;
+    margin-top: 30px;
 
 }
 

@@ -56,28 +56,28 @@ const Nav = () => {
                                 <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>
                             </div> */}
                             <div className='menu-item' onClick={toggle}>
-                                <Link to='./cardsets'>{/*<FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup}/>*/}Card Sets</Link>
+                                <Link to='./cardsets'><FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup}/></Link>
                             </div>
 
                         </>
 
                 }
 
-                <div className='menu-item' onClick={toggle}>
-                    <Link to='https://github.com/heardMan/firebase-auth-react'>{/*<FontAwesomeIcon title='GitHub' color='#e8e8e8' size='3x' icon={faGithub}/>*/}Git Hub</Link>
-                </div>
+                {/* <div className='menu-item' onClick={toggle}>
+                    <Link to='https://github.com/heardMan/firebase-auth-react'><FontAwesomeIcon title='GitHub' color='#e8e8e8' size='3x' icon={faGithub}/></Link>
+                </div> */}
 
                 {/* <div className='menu-item' onClick={toggle}>
                     <Link to='./faq'><FontAwesomeIcon title='Frequently Asked Questions' color='#e8e8e8' size='2x' icon={faQuestion}/></Link>
                 </div> */}
 
-                <div className='menu-item' onClick={toggle}>
-                    <Link to='./faq'>{/*<FontAwesomeIcon title='Contact' color='#e8e8e8' size='2x' icon={faComment}/>*/}Contact</Link>
-                </div>
+                {/* <div className='menu-item' onClick={toggle}>
+                    <Link to='./faq'><FontAwesomeIcon title='Contact' color='#e8e8e8' size='2x' icon={faComment}/>Contact</Link>
+                </div> */}
 
-                <div className='menu-item' onClick={toggle}>
-                    <Link to='./faq'>{/*<FontAwesomeIcon title='Donate' color='#e8e8e8' size='2x' icon={faCircleDollarToSlot}/>*/}Donate</Link>
-                </div>
+                {/* <div className='menu-item' onClick={toggle}>
+                    <Link to='./faq'><FontAwesomeIcon title='Donate' color='#e8e8e8' size='2x' icon={faCircleDollarToSlot}/>Donate</Link>
+                </div> */}
 
 
 

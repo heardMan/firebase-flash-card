@@ -8,7 +8,7 @@ import CardController from '../../controllers/Card.js';
 import chevron from './chevron_left.svg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faPlus, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faPlus, faPen, faChevronRight, faTrash, faRotateLeft, faCheck, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 import './CardSet.css';
 
@@ -186,7 +186,7 @@ const CardSet = props => {
 
 
                                 {
-                                    cards === undefined || cards.length < 0
+                                    cards === undefined || cards.length === 0
                                         ?
                                         <p>No cards yet</p>
                                         :
@@ -241,7 +241,9 @@ const CardSet = props => {
 
                 <div id='add-card-modal-window'>
 
-                    <button id='add-card-modal-close' onClick={e => setAddCardModalOpen(false)}>x</button>
+                    <button id='add-card-modal-close' onClick={e => setAddCardModalOpen(false)}>
+                    <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                    </button>
 
                     <div id='add-card-modal-content'>
 
@@ -303,7 +305,7 @@ const CardSet = props => {
                                         <p className='switch-front'>front</p>
                                     </div>
                                 </div>
-                                <p className='switch-back'>back</p>
+                                <p className={`${switchActive === true ? 'switch-back-off' : 'switch-back-on'}`}>back</p>
                             </div>
 
 
@@ -318,12 +320,12 @@ const CardSet = props => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
-                        }}>Save</button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faCheck} /></button>
                         <button id='add-card-modal-cancel' onClick={e => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
-                        }}>Cancel</button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faXmark} /></button>
                     </div>
                 </div>
 
@@ -339,7 +341,9 @@ const CardSet = props => {
                     <button id='delete-cardset-modal-close' onClick={e => {
                         e.preventDefault();
                         return setDeleteCardSetModalOpen(false)
-                    }}>x</button>
+                    }}>
+                        <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                    </button>
 
                     <div id='delete-cardset-modal-content'>
 
@@ -356,12 +360,16 @@ const CardSet = props => {
                             // CardSetController
                             //     .delete(props.id)
                             //     .catch(e => console.log(e))
-                        }}>Delete</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faTrash} /> Delete
+                        </button>
                         <button id='delete-cardset-modal-cancel' onClick={e => {
                             setDeleteCardSetModalOpen(false);
                             // setName('');
                             // setDescription('');
-                        }}>Go Back</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faRotateLeft} /> Go Back
+                            </button>
                     </div>
                 </div>
 
@@ -371,7 +379,9 @@ const CardSet = props => {
             <div id='edit-set-modal' className={editSetModalOpen === true ? 'open' : ''}>
 
                 <div id='edit-set-modal-window'>
-                    <button id='edit-set-modal-close' onClick={e => setEditSetModalOpen(false)}>x</button>
+                    <button id='edit-set-modal-close' onClick={e => setEditSetModalOpen(false)}>
+                    <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                    </button>
                     <div id='edit-set-modal-content'>
 
                         <form id='editset'>
@@ -393,12 +403,16 @@ const CardSet = props => {
 
 
 
-                        }}>Update Set</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'3x'} icon={faCheck} />
+                        </button>
                         <button id='edit-set-modal-cancel' onClick={e => {
                             setEditSetModalOpen(false);
                             setName(props.name);
                             setDescription(props.description);
-                        }}>Cancel</button>
+                        }}>
+                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'3x'} icon={faXmark} />
+                        </button>
                     </div>
                 </div>
 
