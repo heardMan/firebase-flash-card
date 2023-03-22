@@ -76,18 +76,17 @@
 
 .accordion-content {
     height: 0px;
-    transition: 1.5s;
+    transition: 1s;
     margin-bottom: 1rem;
     overflow: hidden;
     width: 100%;
-    transition: 1.5s;
 }
 
 .accordion-open {
 
-    transition: 1.5s;
+    transition: 1s;
     width: 100%;
-    height: auto;
+    height: 400px;
 }
 
 .cardset-controls {

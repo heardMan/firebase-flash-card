@@ -24,7 +24,11 @@ function App() {
         <AuthContentextProvider>
           <Nav />
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={
+              <ProtectedRoute>
+                <CardSetManager />
+              </ProtectedRoute>
+            } />
             <Route path='/account' element={
               <ProtectedRoute>
                 <Account />

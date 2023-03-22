@@ -39,9 +39,9 @@ const Nav = () => {
 
                 <div className='menu-bg'></div>
 
-                <div className='menu-item' onClick={toggle}>
+                {/* <div className='menu-item' onClick={toggle}>
                     <Link to='/'><FontAwesomeIcon title='Home' color='#e8e8e8' size='2x' icon={faHouse} /></Link>
-                </div>
+                </div> */}
 
                 <div className='menu-item' onClick={toggle}>
                     <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>

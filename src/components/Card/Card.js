@@ -76,13 +76,22 @@ const Card = props => {
                     onClick={e => {
                         e.preventDefault();
                         if (cardEditActive === false) {
-                            //TODO: insert save/update fuction
+                            
+                            
 
                             return setCardEditActive(true)
 
                         }
 
-                        props.update(props.id, cardFront, cardBack)
+                        console.log(props.displayCard.id)
+
+                            props.update(
+                                props.displayCard.id,
+                                cardFront,
+                                cardBack
+                                )
+
+                        //props.update(props.id, cardFront, cardBack)
 
                         return setCardEditActive(false)
 
