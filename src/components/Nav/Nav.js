@@ -20,8 +20,10 @@ const Nav = () => {
 
     const toggle = () => {
         if (menuOpen === false) {
+            document.body.style.overflow = 'hidden';
             return setMenuOpen(true);
         }
+        document.body.style.overflow = 'unset';
         return setMenuOpen(false);
     }
 

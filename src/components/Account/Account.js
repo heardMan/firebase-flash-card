@@ -113,6 +113,7 @@ const Account = () => {
                 .catch(e => {
                     console.log(e.message);
                     if (e.message === 'Firebase: Error (auth/requires-recent-login).') {
+                        document.body.style.overflow = 'hidden';
                         setModalOpen(true)
                     }
 
@@ -136,6 +137,7 @@ const Account = () => {
         }).catch(e => {
             console.log(e);
             if (e.message === 'Firebase: Error (auth/requires-recent-login).') {
+                document.body.style.overflow = 'hidden';
                 setModalOpen(true)
             }
 
@@ -383,6 +385,7 @@ const Account = () => {
                                         verifyEmail().then(res => {
 
                                             console.log(JSON.stringify(res))
+                                            document.body.style.overflow = 'hidden';
                                             setVerifyModalOpen(true)
                                         }).catch(e => {
                                             console.log(JSON.stringify(e))
@@ -444,7 +447,10 @@ const Account = () => {
                 <div className='account-field'>
 
                     <button id='delete-account'
-                        onClick={() => setDeleteModalOpen(true)}
+                        onClick={() => {
+                            document.body.style.overflow = 'hidden';
+                            setDeleteModalOpen(true)
+                        }}
                         onMouseOver={e => {
                             e.preventDefault()
                             setTrashIconColor('#e8e8e8')
@@ -487,6 +493,7 @@ const Account = () => {
             <div className={verifyModalOpen === true ? 'verifyModal open' : 'verifyModal'}>
                 <div className='verifyModal-content'>
                     <button className='close-verify-modal' onClick={e => {
+                        document.body.style.overflow = 'unset';
                         setVerifyModalOpen(false)
                     }}>
                         <FontAwesomeIcon title='Close Verify Email Modal' color='#e8e8e8' size='2x' icon={faXmark} />
@@ -495,7 +502,10 @@ const Account = () => {
                         <h3>A verification link has been sent to your email</h3>
                     </div>
                     <div className='verifyModal-action'>
-                        <button onClick={() => setVerifyModalOpen(false)}>Go Back</button>
+                        <button onClick={() => {
+                            document.body.style.overflow = 'unset';
+                            setVerifyModalOpen(false)
+                            }}>Go Back</button>
                     </div>
 
 
@@ -506,6 +516,7 @@ const Account = () => {
             <div className={deleteModalOpen === true ? 'deleteModal open' : 'deleteModal'}>
                 <div className='deleteModal-content'>
                     <button className='close-delete-modal' onClick={e => {
+                        document.body.style.overflow = 'unset';
                         setDeleteModalOpen(false)
                     }}><FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='2x' icon={faXmark} /> </button>
                     <div className='deleteModal-text'>
@@ -515,7 +526,10 @@ const Account = () => {
                     </div>
                     <div className='deleteModal-action'>
                         <button className='delete-account-btn' onClick={deleteUser} >Delete Account</button>
-                        <button className='go-back-btn' onClick={() => setDeleteModalOpen(false)}>Go Back</button>
+                        <button className='go-back-btn' onClick={() => {
+                            document.body.style.overflow = 'unset';
+                            setDeleteModalOpen(false)}
+                            }>Go Back</button>
 
                     </div>
 
@@ -527,6 +541,7 @@ const Account = () => {
             <div className={modalOpen === true ? 'reauthModal open' : 'reauthModal'}>
                 <div className='reauthModal-content'>
                     <button className='close-reauth-modal' onClick={e => {
+                        document.body.style.overflow = 'unset';
                         setModalOpen(false)
                     }}>
                         <FontAwesomeIcon title='Close Reauthorization Modal' color='#e8e8e8' size='2x' icon={faXmark} />
@@ -544,7 +559,9 @@ const Account = () => {
                                     const newPAss = await reAuthenticateUser(currentPassword)
                                         .then(res => {
                                             console.log(JSON.stringify(res))
+                                            document.body.style.overflow = 'unset';
                                             setModalOpen(false);
+                                            
 
                                         }).catch(e => {
                                             console.log(JSON.stringify(e))

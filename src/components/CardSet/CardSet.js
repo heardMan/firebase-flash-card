@@ -39,6 +39,7 @@ const CardSet = props => {
 
     const [displayCard, setDisplayCard] = useState({id:'',front:'',back:''});
 
+    const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
     
 
     const createCard = () => {
@@ -191,30 +192,14 @@ const CardSet = props => {
                                         <p>No cards yet</p>
                                         :
                                         <div className='cardList'>
-                                            {/* {cards.map((card, i) =>
-
-                                                <Card
-                                                id={displayCard.id}
-                                                front={displayCard.front}
-                                                back={displayCard.back}
-                                                update={updateCard}
-                                                delete={deleteCard}
-                                                idx={cards.indexOf(displayCard)}
-                                                cardCount={cards.length}
-                                                next={nextCard}
-                                                last={lastCard} />
-
-                                            )} */}
+                          
 
 
 
                                             <Card
-                                                // id={displayCard.id}
-                                                // front={displayCard.front}
-                                                // back={displayCard.back}
                                                 displayCard={displayCard}
                                                 update={updateCard}
-                                                delete={deleteCard}
+                                                delete={setDeleteCardModalOpen}
                                                 idx={cards.indexOf(displayCard)}
                                                 cardCount={cards.length}
                                                 next={nextCard}
@@ -320,16 +305,82 @@ const CardSet = props => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
-                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faCheck} /></button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faCheck} /></button>
                         <button id='add-card-modal-cancel' onClick={e => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
-                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faXmark} /></button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
                     </div>
                 </div>
 
             </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div id='delete-card-modal' className={deleteCardModalOpen === true ? 'open' : ''}>
+
+                <div id='delete-card-modal-window'>
+
+                    <button id='delete-card-modal-close' onClick={e => setDeleteCardModalOpen(false)}>
+                    <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                    </button>
+
+                    <div id='delete-card-modal-content'>
+
+                        <p>Are you sure you want to delete this card?</p>
+
+                    </div>
+                    <div id='delete-card-modal-action'>
+                        <button id='delete-card-modal-affirm' onClick={e => {
+                            e.preventDefault();
+                            console.log('deleting...')
+                            setDeleteCardModalOpen(false);
+                            deleteCard(displayCard.id).catch(e => console.log(e))
+                            //props.refresh()
+
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faTrash} /> Delete
+                        </button>
+                        <button id='delete-card-modal-cancel' onClick={e => {
+                            setDeleteCardModalOpen(false);
+                            // setName('');
+                            // setDescription('');
+                        }}>
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faRotateLeft} /> Go Back
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
