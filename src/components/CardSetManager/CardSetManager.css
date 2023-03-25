@@ -1,16 +1,8 @@
 
-#card-set-manager .card-set-list {
-    padding: 0px;
-    list-style-type: none;
-    overflow: hidden;
-    z-index: 700;
-    
-}
 #card-set-manager .card-set-list>ul {
     padding: 0px;
     list-style-type: none;
-    overflow: hidden;
-    z-index: 700;
+
     
 }
 

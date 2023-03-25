@@ -558,6 +558,7 @@
     /* transform: translate(-608px, 0px); */
     overflow: hidden;
     padding-top: 10px;
+    z-index: 801;
 }
 
 #edit-set-modal {
