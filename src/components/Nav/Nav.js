@@ -34,19 +34,17 @@ const Nav = () => {
             <button className='fab toggle' onClick={toggle}>
                 {/* <img alt='menu icon' className='toggle' src={menuLogo} /> */}
 
-                {menuOpen === true ? <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faXmark} /> : <FontAwesomeIcon title='Open Menu' color={'#e8e8e8'} size={'2x'} icon={faBars} />}
+                {menuOpen === true ? <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'3x'} icon={faXmark} /> : <FontAwesomeIcon title='Open Menu' color={'#e8e8e8'} size={'3x'} icon={faBars} />}
 
             </button>
             <div className={menuOpen === true ? 'menu menuOpen' : 'menu'}>
 
                 <div className='menu-bg'></div>
 
-                {/* <div className='menu-item' onClick={toggle}>
-                    <Link to='/'><FontAwesomeIcon title='Home' color='#e8e8e8' size='2x' icon={faHouse} /></Link>
-                </div> */}
-
-                <div className='menu-item' onClick={toggle}>
-                    <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>
+                <div className='menu-item-container' >
+                    <div className='menu-item' onClick={toggle}>
+                        <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>
+                    </div>
                 </div>
 
                 {
@@ -54,12 +52,13 @@ const Nav = () => {
                         ''
                         :
                         <>
-                            {/* <div className='menu-item' onClick={toggle}>
-                                <Link to='./account'><FontAwesomeIcon title='Account' color='#e8e8e8' size='2x' icon={faUser} /></Link>
-                            </div> */}
-                            <div className='menu-item' onClick={toggle}>
-                                <Link to='./cardsets'><FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup}/></Link>
-                            </div>
+
+                            <div className='menu-item-container' >
+                                <div className='menu-item' onClick={toggle}>
+                                    <Link to='./cardsets'><FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup} /></Link>
+                                </div>
+                                </div>
+
 
                         </>
 
@@ -87,8 +86,10 @@ const Nav = () => {
                     authUser === null || authUser.auth === null ?
                         ''
                         :
+                        <div className='menu-item-container' >
                         <div className='menu-item' onClick={toggle}>
                             <SignOut />
+                        </div>
                         </div>
 
                 }
