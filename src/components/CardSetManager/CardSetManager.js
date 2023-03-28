@@ -68,10 +68,13 @@ const CardSetManager = () => {
                     <button
                         id='open-add-set'
                         onClick={
-                            e => addSetModalOpen === false ?
+                            e => {
+                                document.body.style.overflow = 'hidden';
                                 setAddSetModalOpen(true)
-                                :
-                                setAddSetModalOpen(false)
+                            }
+
+
+
                         }
                     >
                         <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'1x'} icon={faPlus} /> Card Set
@@ -136,7 +139,11 @@ const CardSetManager = () => {
             <div id='add-set-modal' className={addSetModalOpen === true ? 'open' : ''}>
 
                 <div id='add-set-modal-window'>
-                    <button id='add-set-modal-close' onClick={e => setAddSetModalOpen(false)}><FontAwesomeIcon title='Close Add Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
+                    <button id='add-set-modal-close' onClick={e => {
+                        document.body.style.overflow = 'unset';
+                        setAddSetModalOpen(false)
+
+                        }}><FontAwesomeIcon title='Close Add Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
                     <div id='add-set-modal-content'>
 
                         <form id='addset'>
@@ -162,7 +169,9 @@ const CardSetManager = () => {
                                         .getAllByUID(authUser.auth.uid)
                                         .then(data => {
                                             setCardSets(data);
+                                            document.body.style.overflow = 'unset';
                                             setAddSetModalOpen(false);
+                                            
                                         })
                                         .catch(e => console.log(e));
 
@@ -172,7 +181,9 @@ const CardSetManager = () => {
                             <FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='3x' icon={faCheck} />
                         </button>
                         <button id='add-set-modal-cancel' onClick={e => {
+                            document.body.style.overflow = 'unset';
                             setAddSetModalOpen(false);
+                            
                             setName('');
                             setDescription('');
                         }}>

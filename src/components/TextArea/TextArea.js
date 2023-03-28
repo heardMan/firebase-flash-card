@@ -50,7 +50,6 @@ const TextArea = props => {
                 onBlur={() => setFocus(false)}
                 disabled={props.disabled}
                 rows={5}
-                columns={5}
             ></textarea>
 
         </div>

@@ -24,7 +24,7 @@ const Card = props => {
             setCardFront(props.displayCard.front);
             setCardBack(props.displayCard.back);
         }
-    }, [props.displayCard])
+    }, [props.displayCard, props.idx])
 
     return (
         <>

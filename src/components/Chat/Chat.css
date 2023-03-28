@@ -1,0 +1,162 @@
+#chat {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 910;
+    overflow: scroll;
+}
+
+#chat.open {
+    display: block;
+    z-index: 910;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: scroll;
+}
+
+#chat-window {
+    position: relative;
+    background-color: #2e3131;
+    width: 80%;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5vh;
+    padding: 1rem;
+    border-radius: 25px;
+    max-width: 350px;
+    z-index: 902;
+}
+
+#chat-close {
+    position: absolute;
+    top: -25px;
+    right: 5px;
+    margin: 2rem auto 1rem auto;
+    padding: 0rem;
+    width: 48px;
+    height: 48px;
+    border: solid 0px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #e8e8e8;
+    transition: 0.5s;
+}
+
+#chat-close:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
+#chat-close:active {
+    box-shadow: none;
+    border: none;
+    transition: 0s;
+}
+
+#chat-content {
+    margin-top: 50px;
+}
+
+.convo {
+    height: 200px;
+    width: 90%;
+    border: solid 1px #e8e8e8;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    border-radius: 25px;
+    overflow: scroll;
+    padding-top: 10px;
+}
+
+.chat-msg-container {
+width: 100%;
+
+position: relative;
+}
+
+.chat-msg {
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
+    width:85%;
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    overflow: scroll;
+    z-index: 901;
+
+}
+
+.user {
+    margin-right: 5px;
+    margin-left: auto;
+    border-radius: 25px 25px 3px 25px;
+    
+
+}
+
+.app {
+    border-radius: 25px 25px 25px 3px;
+    margin-right: auto;
+    margin-left: 5px;
+    background-color: #0097A7;
+    border: solid #80DEEA 1px;
+    /* background-color: #00897B; */
+}
+
+.msg-container {
+    position: relative;
+}
+
+.msg-container>textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    position: relative;
+    background-color: transparent;
+    border: solid 1px #e8e8e8;
+    border-radius: 25px;
+    color: #e8e8e8;
+    font-size: 1rem;
+    font-size: 1.25rem;
+    overflow: scroll;
+    padding: 0.5rem;
+}
+
+.chat-action{
+    position: relative;
+   
+}
+
+#sendMsg, #leaveChat {
+    display: block;
+    width: 95%;
+    height: 48px;
+    border-radius: 50px;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e8e8e8;
+    margin: 0.5rem;
+}
+
+#chatRef{
+    width:10px;
+    height:1px;
+}

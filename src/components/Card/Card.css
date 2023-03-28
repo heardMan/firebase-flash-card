@@ -4,37 +4,25 @@
     height: 375px;
     width: 300px;
     margin: 10x;
-    /* transform: translate(0px,-7px); */
-    
 }
 
 .editcard {
     position: relative;
     height: 100%;
     margin: 0px 15px 0px 15px;
-    
-    
 }
 
 .edit-card-form {
-    /* position: relative;
-    height: 100%;
-    perspective: 1000px; */
     border: solid #80CBC4 1px;
     background-color: #00897B;
     height: 100%;
-    
     perspective: 1000px;
     border-radius: 25px;
-    /* padding-top: 60px; */
     box-shadow: 6px 6px 8px rgb(0,0,0,0.8);
-    /* z-index: 850; */
-    
 }
 
 .edit-card-form-2 {
     height: 75%;
-    /* border: solid 1px #e8e8e8; */
     width: 90%;
     position: absolute;
     top: 48px;
@@ -42,13 +30,11 @@
     transform: translate(-50%, 0%);
     transition: transform 0.8s;
     transform-style: preserve-3d;
-
 }
 
 .flipped .edit-card-form-2 {
     transform: rotateY(180deg) translate(50%, 0%);
 }
-
 
 .edit-card-front,
 .edit-card-back {
@@ -59,7 +45,6 @@
     border-radius: 25px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-
 }
 
 .edit-card-back {
@@ -83,7 +68,6 @@
     backface-visibility: hidden;
     resize: none;
     border-color: #80CBC4;
-   
 }
 
 .editCardNotInFocus {
@@ -91,7 +75,6 @@
     top: 24px;
     left: 10%;
     transform: translate(0%, 0%);
-    /* z-index: 875; */
     font-size: 22px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -104,7 +87,6 @@
     top: -7px;
     left: 5%;
     transform: translate(0%, 0%);
-    /* z-index: 875; */
     font-size: 14px;
     font-weight: 900;
     -webkit-backface-visibility: hidden;
@@ -117,7 +99,6 @@
     position: absolute;
     right: 108px;
     bottom: 43px;
-    /* z-index: 970; */
     border-radius: 50px;
     user-select: none;
     overflow: hidden;
@@ -132,7 +113,6 @@
     border: solid #80CBC4 1px;
     border-radius: 50px;
     overflow: hidden;
-    /* z-index: 940; */
 }
 
 .edit-card-switch-toggle {
@@ -143,12 +123,9 @@
     width: 48px;
     height: 48px;
     border-radius: 50px;
-    /* z-index: 970; */
     border: solid #80CBC4 1px;
     background-color: #00897B;
 }
-
-
 
 .edit-card-switch-toggle-off {
     position: absolute;
@@ -159,12 +136,8 @@
     height: 48px;
     border: solid #80CBC4 1px;
     background-color: #00897B;
-    /* border: solid #e8e8e8 3px; */
     border-radius: 50px;
-    /* z-index: 950; */
     transition: 0.25s linear;
-
-
 }
 
 .edit-card-switch-toggle-on {
@@ -176,12 +149,8 @@
     height: 48px;
     border: solid #80CBC4 1px;
     background-color: #00897B;
-    /* border: solid #e8e8e8 3px; */
     border-radius: 50px;
-    /* z-index: 950; */
     transition: 0.25s linear;
-
-
 }
 
 .edit-card-switch-front {

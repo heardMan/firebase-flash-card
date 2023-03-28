@@ -3,7 +3,9 @@ import { useAuth } from '../../contexts/Auth.js'
 import { Link } from 'react-router-dom';
 import SignOut from '../SignOut/SignOut.js';
 
-import menuLogo from './menu-24px-light.svg'
+import Chat from '../Chat/Chat.js';
+
+//import menuLogo from './menu-24px-light.svg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark, faHouse, faLayerGroup, faUser, faQuestion, faComment, faCircleDollarToSlot } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +17,7 @@ const Nav = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [chatOpen, setChatOpen] = useState(false)
 
     const { authUser } = useAuth();
 
@@ -30,6 +33,7 @@ const Nav = () => {
     useEffect(() => console.log(authUser.auth), [authUser])
 
     return (
+        <>
         <nav id='nav'>
             <button className='fab toggle' onClick={toggle}>
                 {/* <img alt='menu icon' className='toggle' src={menuLogo} /> */}
@@ -57,12 +61,20 @@ const Nav = () => {
                                 <div className='menu-item' onClick={toggle}>
                                     <Link to='./cardsets'><FontAwesomeIcon title='Card Sets' color='#e8e8e8' size='2x' icon={faLayerGroup} /></Link>
                                 </div>
-                                </div>
+                            </div>
 
 
                         </>
 
                 }
+
+                <div className='menu-item' onClick={(e) => {
+                    e.preventDefault();
+                    setChatOpen(true)
+                }} >
+                    <Link to='#'><FontAwesomeIcon title='Contact' color='#e8e8e8' size='2x' icon={faComment} /></Link>
+                    
+                </div>
 
                 {/* <div className='menu-item' onClick={toggle}>
                     <Link to='https://github.com/heardMan/firebase-auth-react'><FontAwesomeIcon title='GitHub' color='#e8e8e8' size='3x' icon={faGithub}/></Link>
@@ -72,9 +84,7 @@ const Nav = () => {
                     <Link to='./faq'><FontAwesomeIcon title='Frequently Asked Questions' color='#e8e8e8' size='2x' icon={faQuestion}/></Link>
                 </div> */}
 
-                {/* <div className='menu-item' onClick={toggle}>
-                    <Link to='./faq'><FontAwesomeIcon title='Contact' color='#e8e8e8' size='2x' icon={faComment}/>Contact</Link>
-                </div> */}
+
 
                 {/* <div className='menu-item' onClick={toggle}>
                     <Link to='./faq'><FontAwesomeIcon title='Donate' color='#e8e8e8' size='2x' icon={faCircleDollarToSlot}/>Donate</Link>
@@ -87,14 +97,24 @@ const Nav = () => {
                         ''
                         :
                         <div className='menu-item-container' >
-                        <div className='menu-item' onClick={toggle}>
-                            <SignOut />
-                        </div>
+                            <div className='menu-item' onClick={toggle}>
+                                <SignOut />
+                            </div>
                         </div>
 
                 }
             </div>
         </nav>
+        {
+                    authUser === null || authUser.auth === null || authUser.auth===undefined ?
+                        ''
+                        :
+                        
+                        <Chat open={chatOpen} setOpen={setChatOpen} user={authUser.auth.uid}/>
+
+                }
+        
+        </>
     );
 };
 
