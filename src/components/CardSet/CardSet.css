@@ -9,11 +9,21 @@
     justify-content: center;
     text-align: center;
     max-width: 300px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
-.card-set-list {
-    margin-bottom: 96px;
+.card-set.light{
+    border: solid 1px #263238;
 }
+.card-set.dark{
+    border: solid 1px #CFD8DC;
+}
+
+
+
+/* .card-set-list {
+    padding-bottom: 98px;
+} */
 
 .card-set>div>div>div {
     margin-top: 1rem;

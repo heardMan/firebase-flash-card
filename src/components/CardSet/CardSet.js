@@ -6,6 +6,7 @@ import Card from '../Card/Card'
 // import edit from './edit.svg';
 import CardController from '../../controllers/Card.js';
 import chevron from './chevron_left.svg'
+import { useTheme } from '../../contexts/Theme';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus, faPen, faChevronRight, faTrash, faRotateLeft, faCheck, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +41,8 @@ const CardSet = props => {
     const [displayCard, setDisplayCard] = useState({id:'',front:'',back:''});
 
     const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
+
+    const {theme} = useTheme()
     
 
     const createCard = (idx) => {
@@ -51,9 +54,11 @@ const CardSet = props => {
                 CardController
                     .getAllBySetID(props.id)
                     .then(data => {
+                        setSwitchActive(false);
                         setCards(data)
                         console.log('displayCard')
                         console.log(displayCard)
+
                         return setDisplayCard(data[data.length-1])
 
                         // if(data.indexOf(displayCard)>-1){
@@ -150,7 +155,7 @@ const CardSet = props => {
 
     return (
         <>
-            <div className='card-set'>
+            <div className={`card-set ${theme}`}>
                 <div>
 
                     <div>
@@ -341,6 +346,7 @@ const CardSet = props => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
+                            setSwitchActive(false)
                         }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
                     </div>
                 </div>

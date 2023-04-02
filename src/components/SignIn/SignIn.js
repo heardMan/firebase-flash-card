@@ -44,6 +44,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/Auth.js';
 import EmailInput from '../EmailInput/EmailInput';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import { useTheme } from '../../contexts/Theme.js';
+
+
+
 import './SignIn.css';
 
 const SignIn = () => {
@@ -58,10 +62,13 @@ const SignIn = () => {
 
     const [allowSubmit, setAllowSubmit] = useState(false);
 
+
+
     //const [loading, setLoading] = useState(false)
 
     const { logIn, authUser } = useAuth();
     const navigate = useNavigate();
+    const {theme} = useTheme();
 
     const handleSubmit = async e => {
 
@@ -134,6 +141,7 @@ const SignIn = () => {
     );
 
     return (
+        <div className={`sign-in-page ${theme}`}>
         <form id='sign-in'>
 
             <div className='form-group'>
@@ -167,12 +175,13 @@ const SignIn = () => {
             </div>
 
             <div className='form-group'>
-                <p>Don't have an account? <Link className='signup' to='/signup'>Sign Up Here</Link></p>
+                <p>Don't have an account? <Link className={`signup ${theme}`} to='/signup'>Sign Up Here</Link></p>
                 {/* @TODO: Implement Password Reset  */}
-                <p><Link className='signup' to='/reset' onClick={e=>{console.log(e)}}>Forgot Your Password?</Link></p>
+                <p><Link className={`signup ${theme}`} to='/reset' onClick={e=>{console.log(e)}}>Forgot Your Password?</Link></p>
             </div>
 
         </form>
+        </div>
     );
 };
 

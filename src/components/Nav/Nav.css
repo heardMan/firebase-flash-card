@@ -5,12 +5,19 @@
     width: 64px;
     height: 64px;
     border-radius: 100%;
-    border: solid #80CBC4 1px;
     background-color: #00897B;
     /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.65); */
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
     z-index: 901;
     transform:scale(1.00);
+}
+
+.fab.light{
+    border: solid #00695C 2px;
+}
+
+.fab.dark{
+    border: solid #80CBC4 2px;
 }
 
 .fab:hover {
@@ -56,16 +63,26 @@
     height: 48px;
     width: 48px;
     color: #e8e8e8;
-    border: solid #80CBC4 1px;
+    
     background-color: #00897B;
     font-size: 1rem;
     font-weight: 700;
     border-radius: 50px;
-    box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.5);
     z-index: 901;
     /* transition: 0.5s; */
     transform: scale(0.8);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+   
+}
+
+.menu-item.light {
+    border: solid #00695C 2px;
+    
+
+}
+
+.menu-item.dark {
+    border: solid #80CBC4 2px;
+    
 }
 
 .menu-item:hover {
@@ -105,9 +122,8 @@
     right:0px;
     width: 100vw;
     height:100vh;
-    transition: 0.5s;
-    transition-delay: 0.8s;
-    opacity: 1;
+    transition: 0.8s linear;
+    /* opacity: 1; */
     visibility: hidden;
 }
 
@@ -116,14 +132,19 @@
     bottom:0px;
     right:0px;
     width: 100vw;
-    height:100vh;
-    /* background-color: rgba(200, 200, 200, 0.2); */
-    background-color: transparent;
+    height:100vh; 
     backdrop-filter: blur(3px);
-    transition: 0.5s;
+    transition: 0.8s linear;
     z-index: 850;
     visibility: visible;
-    
+}
+
+.menu-bg.light{
+    background-color: rgba(38, 50, 56, 0.3);
+}
+
+.menu-bg.dark{
+    background-color: rgba(207, 216, 220, 0.05);
 }
 
 .menu>:nth-child(2) {
@@ -256,6 +277,48 @@
     transition: 0.5s;
     transition-delay: 0.9s;
     z-index: 901;
+}
+
+.menu-theme-control.signed-in{
+    position: absolute;
+    bottom: 405px;
+    right: -170px;
+    transition: 0.5s;
+    transition-delay: 0.9s;
+    z-index: 901;
+    width: 128px;
+    
+}
+
+.menuOpen>.menu-theme-control.signed-in{
+    position: absolute;
+    bottom: 405px;
+    right: -34px;
+    transition: 0.5s;
+    transition-delay: 0.9s;
+    z-index: 901;
+    width: 128px;
+}
+
+.menu-theme-control.signed-out{
+    position: absolute;
+    bottom: 285px;
+    right: -170px;
+    transition: 0.5s;
+    transition-delay: 0.6s;
+    z-index: 901;
+    width: 128px;
+    
+}
+
+.menuOpen>.menu-theme-control.signed-out{
+    position: absolute;
+    bottom: 285px;
+    right: -34px;
+    transition: 0.5s;
+    transition-delay: 0.6s;
+    z-index: 901;
+    width: 128px;
 }
 
 .menu-link {

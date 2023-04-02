@@ -4,6 +4,7 @@ import { faBars, faXmark, faHouse, faLayerGroup, faUser, faQuestion, faRightFrom
 import TextArea from '../TextArea/TextArea';
 import ConversationController from '../../controllers/Conversation.js';
 import MessageController from '../../controllers/Message.js';
+import ai from './ChatAI.js';
 
 import './Chat.css';
 
@@ -13,11 +14,7 @@ const Chat = props => {
 
 
     const [convoID, setConvoID] = useState('');
-    const [convo, setConvo] = useState(
-        [
-
-        ]
-    );
+    const [convo, setConvo] = useState([]);
 
     const [msg, setMsg] = useState('');
 
@@ -59,20 +56,20 @@ const Chat = props => {
 
     }
 
-    const ai = conversation => {
+    // const ai = conversation => {
 
-        let response;
+    //     let response;
 
-        if (conversation.length === 0) {
-            response = 'Welcome, I am Quick Card\'s Chat Bot, how can I help you?'
-        }
+    //     if (conversation.length === 0) {
+    //         response = 'Welcome, I am Quick Card\'s Chat Bot, how can I help you?'
+    //     }
 
-        if (conversation.length > 1) {
-            response = 'I will take note of that!'
-        }
+    //     if (conversation.length > 1) {
+    //         response = 'I will take note of that!'
+    //     }
 
-        return response;
-    }
+    //     return response;
+    // }
 
 
     useEffect(() => {
@@ -139,14 +136,7 @@ const Chat = props => {
                 }).catch(err => console.log(err))
         }
 
-
-
         scrollToBottom()
-
-
-
-
-
 
     }, [props.open, convo.length])
 
@@ -204,8 +194,6 @@ const Chat = props => {
                             columns={4}
                         ></textarea>
 
-
-
                     </div>
                     <div className='chat-action'>
                         <button
@@ -227,19 +215,8 @@ const Chat = props => {
                         >
                             Leave Chat <FontAwesomeIcon title='Leave Caht' color={'#e8e8e8'} size={'1x'} icon={faRightFromBracket} />
                         </button>
-
                     </div>
-
-
-
-
-
                 </div>
-
-
-
-
-
             </div>
 
         </div>

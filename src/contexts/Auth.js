@@ -22,7 +22,7 @@ import User from '../controllers/User.js';
 
 const AuthContext = createContext();
 
-export const AuthContentextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
 
     const [authUser, setAuthUser] = useState({});
 

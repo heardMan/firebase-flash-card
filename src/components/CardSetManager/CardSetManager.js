@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/Auth.js';
 import TextInput from '../TextInput/TextInput.js';
 import CardSet from '../CardSet/CardSet.js';
 import TextArea from '../TextArea/TextArea';
+import { useTheme } from '../../contexts/Theme.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +20,8 @@ const CardSetManager = () => {
     const { authUser } = useAuth();
 
     const [cardSets, setCardSets] = useState([]);
+
+    const {theme} = useTheme();
 
     const deleteCardSet = id => {
         const newCardSet = cardSets.filter((elem) => { return elem.id !== id })
@@ -61,7 +64,7 @@ const CardSetManager = () => {
 
     return (
         <>
-            <div id='card-set-manager'>
+            <div id='card-set-manager' className={`${theme}`}>
                 {console.log(cardSets)}
                 <div id='add-set'>
 

@@ -32,16 +32,18 @@
 
 
 import React, { useState } from 'react';
+import { useTheme } from '../../contexts/Theme';
 import './PasswordInput.css';
 
 const PasswordInput = props => {
 
     const [focus, setFocus] = useState(false);
+    const {theme} = useTheme();
 
     const focusedClass = focus === true || props.value.length > 0 ? 'focused' : '';
 
     return (
-        <div className='password-input'>
+        <div className={`${theme} password-input`}>
 
             <label className={focusedClass} >{props.label}</label>
 

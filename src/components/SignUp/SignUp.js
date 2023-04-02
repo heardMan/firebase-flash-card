@@ -75,6 +75,9 @@ import TextInput from '../TextInput/TextInput';
 import EmailInput from '../EmailInput/EmailInput';
 import PasswordInput from '../PasswordInput/PasswordInput';
 
+import { useTheme } from '../../contexts/Theme.js';
+
+
 import './SignUp.css';
 
 const SignUp = () => {
@@ -96,10 +99,13 @@ const SignUp = () => {
 
     const [allowSubmit, setAllowSubmit] = useState(false);
 
+
+
     //const { createUserProfile } = User();
     const { createAuthUser } = useAuth();
 
     const navigate = useNavigate();
+    const {theme} = useTheme();
 
     const handleSubmit = async e => {
 
@@ -192,7 +198,8 @@ const SignUp = () => {
     );
 
     return (
-        <form id='sign-up'>
+        <div className={`sign-up-page ${theme}`}>
+        <form id='sign-up' >
 
             <div className='form-group'>
                 <h2>Sign Up</h2>
@@ -229,10 +236,11 @@ const SignUp = () => {
             </div>
 
             <div className='form-group'>
-                <p>Already have an account? <Link className='signin' to='/signin'>Sign In Here</Link></p>
+                <p>Already have an account? <Link className={`signin ${theme}`} to='/signin'>Sign In Here</Link></p>
             </div>
 
         </form>
+        </div>
     );
 };
 

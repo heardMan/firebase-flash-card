@@ -30,16 +30,19 @@
  */
 
 import React, { useState } from 'react';
+import { useTheme } from '../../contexts/Theme';
 import './TextInput.css';
 
 const TextInput = props => {
 
     const [focus, setFocus] = useState(false);
 
+    const {theme} = useTheme();
+
     const focusedClass = focus === true || props.value.length > 0 ? 'focused' : '';
 
     return (
-        <div className='text-input'>
+        <div className={`${theme} text-input`}>
 
             <label className={focusedClass} >{props.label}</label>
 

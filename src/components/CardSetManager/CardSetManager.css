@@ -1,3 +1,19 @@
+#card-set-manager{
+    /* position: fixed;
+    top:0px;
+    left:0px;
+    width: 101%;
+    height:101%; */
+    overflow: scroll;
+    /* overscroll-behavior: none; */
+    
+    padding-bottom:98px;
+}
+
+#card-set-manager.dark {
+    background-color: #263238;
+    color: #CFD8DC;
+}
 
 #card-set-manager .card-set-list>ul {
     padding: 0px;
@@ -20,14 +36,14 @@
     color: #e8e8e8;
     font-size: 1.25rem;
     font-weight: 600;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.8);
     width: 200px;
     height:64px;
     transform:scale(1);
 }
 
 #add-set>button:hover {
-    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.8);
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.8);
     transform:scale(1.01);
 }
 

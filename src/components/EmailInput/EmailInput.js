@@ -30,16 +30,18 @@
  */
 
 import React, { useState } from 'react';
+import { useTheme } from '../../contexts/Theme';
 import './EmailInput.css';
 
 const EmailInput = props => {
 
     const [focus, setFocus] = useState(false);
+    const {theme} = useTheme();
 
     const focusedClass = focus === true || props.value.length > 0 ? 'focused' : '';
 
     return (
-        <div className='email-input'>
+        <div className={`${theme} email-input`}>
 
             <label className={focusedClass} >{props.label}</label>
 

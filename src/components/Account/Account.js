@@ -6,6 +6,7 @@ import TextInput from '../TextInput/TextInput.js';
 import EmailInput from '../EmailInput/EmailInput.js';
 import PasswordInput from '../PasswordInput/PasswordInput.js';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../../contexts/Theme.js';
 
 import './Account.css';
 
@@ -25,6 +26,8 @@ const Account = () => {
     } = useAuth();
 
     const navigate = useNavigate();
+
+    const {theme} = useTheme();
 
 
     const [fName, setFName] = useState(authUser.profile !== undefined ? authUser.profile.firstName : 'user not found');
@@ -242,10 +245,9 @@ const Account = () => {
         passwordValid2, confirmPassword])
 
     return (
-        <div>
+        <div className={`account-page ${theme}`}>
 
             <div className='account-info'>
-                {/* <p>Auth Obj: {JSON.stringify(authUser)}</p> */}
 
                 <div className='account-field'>
                     <div className='account-input'>
@@ -263,7 +265,7 @@ const Account = () => {
 
                         <button
 
-                            className={`${fNameActive === false ? 'account-edit' : 'account-save'} ${allowFNameSave === true ? 'active' : ''}`}
+                            className={`${fNameActive === false ? `${theme} account-edit` : 'account-save'} ${allowFNameSave === true ? 'active' : ''}`}
                             
                             onClick={e => {
 
@@ -283,9 +285,9 @@ const Account = () => {
                             }>
 
                             {fNameActive === false ?
-                                <FontAwesomeIcon title='Edit First Name' color='#e8e8e8' size='2x' icon={faPen} />
+                                <FontAwesomeIcon title='Edit First Name' color='#CFD8DC' size='2x' icon={faPen} />
                                 :
-                                <FontAwesomeIcon title='Save First Name' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
+                                <FontAwesomeIcon title='Save First Name' color='#CFD8DC' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -302,7 +304,7 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button 
-                        className={`${lNameActive === false ? 'account-edit' : 'account-save'} ${allowLNameSave === true ? 'active' : ''}`}
+                        className={`${lNameActive === false ? `${theme} account-edit` : 'account-save'} ${allowLNameSave === true ? 'active' : ''}`}
                         onClick={e => {
 
                             e.preventDefault();
@@ -322,9 +324,9 @@ const Account = () => {
 
 
                             {lNameActive === false ?
-                                <FontAwesomeIcon title='Edit Last Name' color='#e8e8e8' size='2x' icon={faPen} />
+                                <FontAwesomeIcon title='Edit Last Name' color='#CFD8DC' size='2x' icon={faPen} />
                                 :
-                                <FontAwesomeIcon title='Save Last Name' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
+                                <FontAwesomeIcon title='Save Last Name' color='#CFD8DC' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -345,7 +347,7 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button 
-                        className={`${emailActive === false ? 'account-edit' : 'account-save'} ${allowEmailSave === true ? 'active' : ''}`}
+                        className={`${emailActive === false ? `${theme} account-edit` : 'account-save'} ${allowEmailSave === true ? 'active' : ''}`}
                         onClick={e => {
 
                             e.preventDefault();
@@ -364,9 +366,9 @@ const Account = () => {
                         }>
 
                             {emailActive === false ?
-                                <FontAwesomeIcon title='Edit Email' color='#e8e8e8' size='2x' icon={faPen} />
+                                <FontAwesomeIcon title='Edit Email' color='#CFD8DC' size='2x' icon={faPen} />
                                 :
-                                <FontAwesomeIcon title='Save Email' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
+                                <FontAwesomeIcon title='Save Email' color='#CFD8DC' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
@@ -381,7 +383,7 @@ const Account = () => {
                                 :
                                 <>
                                     <p className='unverified'>email Not Verified</p>
-                                    <button id='verify-email' onClick={e => {
+                                    <button id={`verify-email-${theme}`} onClick={e => {
                                         verifyEmail().then(res => {
 
                                             console.log(JSON.stringify(res))
@@ -409,7 +411,7 @@ const Account = () => {
                     </div>
                     <div className='account-action'>
                         <button 
-                        className={`${passwordActive === false ? 'account-edit' : 'account-save'} ${allowPasswordSave === true ? 'active' : ''}`}
+                        className={`${passwordActive === false ? `${theme} account-edit` : 'account-save'} ${allowPasswordSave === true ? 'active' : ''}`}
                         onClick={e => {
 
                             e.preventDefault();
@@ -427,15 +429,15 @@ const Account = () => {
                         }
                         }>
                             {passwordActive === false ?
-                                <FontAwesomeIcon title='Edit Password' color='#e8e8e8' size='2x' icon={faPen} />
+                                <FontAwesomeIcon title='Edit Password' color='#CFD8DC' size='2x' icon={faPen} />
                                 :
-                                <FontAwesomeIcon title='Save Password' color='#e8e8e8' size='2x' icon={faFloppyDisk} />
+                                <FontAwesomeIcon title='Save Password' color='#CFD8DC' size='2x' icon={faFloppyDisk} />
                             }
                         </button>
                     </div>
                 </div>
 
-                <div className={passwordActive === false ? 'account-field hide-confirm' : 'account-field open-confirm'}>
+                <div className={passwordActive === false ? `account-field hide-confirm` : `account-field open-confirm`}>
                     <div className='account-input-confirm'>
                         <PasswordInput label={'confirm password'} value={confirmPassword} onChange={setConfirmPassword} disabled={passwordActive === true ? false : true} />
                         <p className='validate-text'> {passwordValid2} </p>
@@ -444,7 +446,7 @@ const Account = () => {
 
 
 
-                <div className='account-field'>
+                <div className={`account-field-${theme}`}>
 
                     <button id='delete-account'
                         onClick={() => {
@@ -453,19 +455,20 @@ const Account = () => {
                         }}
                         onMouseOver={e => {
                             e.preventDefault()
-                            setTrashIconColor('#e8e8e8')
+                            setTrashIconColor('#CFD8DC')
                         }}
                         onMouseLeave={e => {
                             e.preventDefault()
-                            setTrashIconColor('#C0392B')
+                            setTrashIconColor('#D32F2F')
                         }}
                         onMouseDown={e => {
                             e.preventDefault()
-                            setTrashIconColor('#e8e8e8')
+                            setTrashIconColor('#CFD8DC')
                         }}
                         onMouseUp={e => {
                             e.preventDefault()
-                            setTrashIconColor('#C0392B')
+                            setTrashIconColor('#D32F2F')
+                            //F44336
                         }}
                     >
                         <FontAwesomeIcon
@@ -490,13 +493,13 @@ const Account = () => {
             </div> */}
 
             {/* Email verification sent confirmation modal */}
-            <div className={verifyModalOpen === true ? 'verifyModal open' : 'verifyModal'}>
-                <div className='verifyModal-content'>
+            <div className={verifyModalOpen === true ? `verifyModal open ${theme}` : 'verifyModal'}>
+                <div className={`verifyModal-content ${theme}`}>
                     <button className='close-verify-modal' onClick={e => {
                         document.body.style.overflow = 'unset';
                         setVerifyModalOpen(false)
                     }}>
-                        <FontAwesomeIcon title='Close Verify Email Modal' color='#e8e8e8' size='2x' icon={faXmark} />
+                        <FontAwesomeIcon title='Close Verify Email Modal' color={theme==='light'?'#263238':'#CFD8DC'} size='2x' icon={faXmark} />
                     </button>
                     <div className='verifyModal-text'>
                         <h3>A verification link has been sent to your email</h3>
@@ -513,12 +516,12 @@ const Account = () => {
             </div>
 
             {/* Account delete confirmation modal */}
-            <div className={deleteModalOpen === true ? 'deleteModal open' : 'deleteModal'}>
-                <div className='deleteModal-content'>
+            <div className={deleteModalOpen === true ? `deleteModal open ${theme}` : 'deleteModal'}>
+                <div className={`deleteModal-content ${theme}`}>
                     <button className='close-delete-modal' onClick={e => {
                         document.body.style.overflow = 'unset';
                         setDeleteModalOpen(false)
-                    }}><FontAwesomeIcon title='Close Delete Account Modal' color='#e8e8e8' size='2x' icon={faXmark} /> </button>
+                    }}><FontAwesomeIcon title='Close Delete Account Modal' color={theme==='light'?'#263238':'#CFD8DC'} size='2x' icon={faXmark} /> </button>
                     <div className='deleteModal-text'>
                         <h3>You are about to delete your account.</h3>
                         <h3>This action cannot be reversed.</h3>
@@ -526,7 +529,7 @@ const Account = () => {
                     </div>
                     <div className='deleteModal-action'>
                         <button className='delete-account-btn' onClick={deleteUser} >Delete Account</button>
-                        <button className='go-back-btn' onClick={() => {
+                        <button className={`go-back-btn ${theme}`} onClick={() => {
                             document.body.style.overflow = 'unset';
                             setDeleteModalOpen(false)}
                             }>Go Back</button>
@@ -538,13 +541,13 @@ const Account = () => {
             </div>
 
             {/* Reauthorization modal */}
-            <div className={modalOpen === true ? 'reauthModal open' : 'reauthModal'}>
-                <div className='reauthModal-content'>
+            <div className={modalOpen === true ? `reauthModal open ${theme}` : 'reauthModal'}>
+                <div className={`reauthModal-content ${theme}`}>
                     <button className='close-reauth-modal' onClick={e => {
                         document.body.style.overflow = 'unset';
                         setModalOpen(false)
                     }}>
-                        <FontAwesomeIcon title='Close Reauthorization Modal' color='#e8e8e8' size='2x' icon={faXmark} />
+                        <FontAwesomeIcon title='Close Reauthorization Modal' color={theme==='light'?'#263238':'#CFD8DC'} size='2x' icon={faXmark} />
                     </button>
                     <div className='reauth-form'>
                         <h3>Before you perform this action, you need to enter your current password</h3>

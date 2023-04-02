@@ -28,8 +28,8 @@
     background-color: transparent;
     border: none;
     border-radius: 0px;
-    border-bottom: solid 1px #e8e8e8;
-    color: #e8e8e8;
+    border-bottom-style: solid; 
+    border-bottom-width:1px;
     font-size: 1rem;
     z-index: 840;
     width: 80%;
@@ -37,6 +37,24 @@
     font-size: 1.25rem;
 }
 
+.dark.text-input input {
+    border-bottom-color: #CFD8DC;
+    color: #CFD8DC;
+}
+
+.light.text-input input {
+    border-bottom-color: #263238;
+    color: #000000;
+}
+
 .text-input input:focus {
     outline:none;
 }
+
+
+
+
+
+
+
+

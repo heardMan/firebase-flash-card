@@ -1,0 +1,141 @@
+.theme-switch-container {
+    display: block;
+    position: relative;
+    z-index: 100;
+    border-radius: 50px;
+    user-select: none;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: 15%;
+}
+
+.theme-switch-light {
+    position: relative;
+    width: 96px;
+    height: 48px;
+    background-color: #CFD8DC;
+    border: solid #00695C 3px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.theme-switch-dark {
+    position: relative;
+    width: 96px;
+    height: 48px;
+    background-color: #ECEFF1;
+    border: solid  #80CBC4 3px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.theme-switch-toggle-light {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    border: solid #00695C 3px;
+    background-color: #00897B;
+}
+
+.theme-switch-toggle-dark {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    border: solid #80CBC4 3px;
+    background-color: #00897B;
+}
+
+.theme-switch-toggle-off {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(-3%, -50%);
+    width: 99px;
+    height: 48px;
+    border: solid #80CBC4 1px;
+    background-color: #263238;
+    
+    border-radius: 50px;
+
+    transition: 0.25s linear;
+
+
+}
+
+.theme-switch-toggle-on {
+    position: absolute;
+    top: 50%;
+    left: 46px;
+    transform: translate(0%, -50%);
+    width: 96px;
+    height: 48px;
+    border: solid #80CBC4 1px;
+    background-color: #00897B;
+    
+    border-radius: 50px;
+
+    transition: 0.25s linear;
+
+
+}
+
+.theme-switch-front {
+    position: absolute;
+    top: -10%;
+    right: 13%;
+    transform: translate(0%, -12%);
+    color: #ECEFF1;
+    font-weight: bold;
+}
+
+.theme-switch-back-off {
+    position: absolute;
+    top: -18%;
+    left: 12%;
+    transform: translate(0%, 12%);
+    color: #00897B;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+
+.theme-switch-back-on {
+    position: absolute;
+    top: -18%;
+    left: -40%;
+    transform: translate(0%, 12%);
+    color: #00897B;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+
+.theme-switch-toggle-on>.theme-switch-back>p {
+    position: absolute;
+    top: -4%;
+    left: -40%;
+    transform: translate(0%, 12%);
+    color: #00897B;
+    font-weight: bold;
+    transition: 0.5;
+
+}
+
+
+
+
+
+
+
+
+
+
+

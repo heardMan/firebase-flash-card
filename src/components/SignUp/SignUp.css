@@ -1,3 +1,9 @@
+.sign-up-page {
+    height: 100%;
+    padding-top: 10px;
+    overflow: scroll;
+}
+
 #sign-up {
     /* border: solid 1px #e8e8e8; */
     border-radius: 25px;
@@ -50,7 +56,18 @@
 #sign-up .signin {
     text-decoration: underline;
     font-weight: 700;
-    color: #e8e8e8;
+}
+
+#sign-up .signin .light >a {
+    text-decoration: underline;
+    font-weight: 700;
+    color: #00695C;
+}
+
+#sign-up .signin .dark >a{
+    text-decoration: underline;
+    font-weight: 700;
+    color: #CFD8DC;
 }
 
 #sign-up .reset {

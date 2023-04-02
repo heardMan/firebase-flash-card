@@ -28,6 +28,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/Auth.js';
 import EmailInput from '../EmailInput/EmailInput';
+import { useTheme } from '../../contexts/Theme.js';
+
 
 import './PasswordReset.css';
 
@@ -40,6 +42,7 @@ const PasswordReset = () => {
 
     const { resetUserPassword } = useAuth();
     const navigate = useNavigate();
+    const {theme} = useTheme();
 
     const handleSubmit = async e => {
 
@@ -94,6 +97,7 @@ const PasswordReset = () => {
     );
 
     return (
+        <div className={`password-reset-page ${theme}`}>
         <form id='password-reset'>
 
             <div className='form-group'>
@@ -111,15 +115,16 @@ const PasswordReset = () => {
 
             <div className='form-group'>
                 <p>Don't have an account? </p>
-                <Link className='signup' to='/signup'>Sign Up Here</Link>
+                <Link className={`signup ${theme}`} to='/signup'>Sign Up Here</Link>
             </div>
 
             <div className='form-group'>
                 <p> Remeber your password? </p>
-                <Link className='signup' to='/signin'>Sign In Here</Link>
+                <Link className={`signup ${theme}`} to='/signin'>Sign In Here</Link>
             </div>
 
         </form>
+        </div>
     );
 };
 
