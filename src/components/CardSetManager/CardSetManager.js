@@ -6,6 +6,7 @@ import CardSet from '../CardSet/CardSet.js';
 import TextArea from '../TextArea/TextArea';
 import { useTheme } from '../../contexts/Theme.js';
 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -91,7 +92,7 @@ const CardSetManager = () => {
 
 
 
-                <div className='card-set-list'>
+                <div className={`card-set-list ${theme}`}>
                     <ul>
                         {
                             cardSets === undefined || cardSets.length === 0 ?
@@ -139,14 +140,14 @@ const CardSetManager = () => {
 
 
 
-            <div id='add-set-modal' className={addSetModalOpen === true ? 'open' : ''}>
+            <div id='add-set-modal' className={addSetModalOpen === true ? `open ${theme}` : ''}>
 
-                <div id='add-set-modal-window'>
+                <div id='add-set-modal-window' className={`${theme}`}>
                     <button id='add-set-modal-close' onClick={e => {
                         document.body.style.overflow = 'unset';
                         setAddSetModalOpen(false)
 
-                        }}><FontAwesomeIcon title='Close Add Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
+                        }}><FontAwesomeIcon title='Close Add Set Modal' color={theme==='light'?'#263238':'#CFD8DC'} size={'2x'} icon={faXmark} /></button>
                     <div id='add-set-modal-content'>
 
                         <form id='addset'>

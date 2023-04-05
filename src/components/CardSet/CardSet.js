@@ -38,12 +38,12 @@ const CardSet = props => {
 
     const [cards, setCards] = useState([]);
 
-    const [displayCard, setDisplayCard] = useState({id:'',front:'',back:''});
+    const [displayCard, setDisplayCard] = useState({ id: '', front: '', back: '' });
 
     const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
 
-    const {theme} = useTheme()
-    
+    const { theme } = useTheme()
+
 
     const createCard = (idx) => {
         console.log(props.id)
@@ -59,14 +59,14 @@ const CardSet = props => {
                         console.log('displayCard')
                         console.log(displayCard)
 
-                        return setDisplayCard(data[data.length-1])
+                        return setDisplayCard(data[data.length - 1])
 
                         // if(data.indexOf(displayCard)>-1){
                         //     return setDisplayCard(cards[cards.indexOf(displayCard)])
                         // }
 
                         // return setDisplayCard(data[data.length])
-                        
+
 
                     })
                     .catch(e => console.log(e));
@@ -82,8 +82,8 @@ const CardSet = props => {
             .catch(e => console.log(e));
     }
 
-    const deleteCard = (id,idx) => {
-        
+    const deleteCard = (id, idx) => {
+
         CardController
             .delete(id)
             .then(() => {
@@ -91,10 +91,10 @@ const CardSet = props => {
                     .getAllBySetID(props.id)
                     .then(data => {
                         setCards(data)
-                        if(idx===0){
+                        if (idx === 0) {
                             return setDisplayCard(data[0])
                         }
-                        return setDisplayCard(data[idx-1])
+                        return setDisplayCard(data[idx - 1])
                     })
                     .catch(e => console.log(e));
             })
@@ -125,7 +125,7 @@ const CardSet = props => {
         let lastIndex = currentIndex - 1
 
         if (currentIndex === 0) {
-            lastIndex = cards.length-1
+            lastIndex = cards.length - 1
         }
 
         return setDisplayCard(cards[lastIndex])
@@ -135,7 +135,7 @@ const CardSet = props => {
 
     useEffect(() => {
 
-        if (props.id !== undefined && cards.length===0) {
+        if (props.id !== undefined && cards.length === 0) {
             console.log(props.id)
             CardController
                 .getAllBySetID(props.id)
@@ -177,7 +177,7 @@ const CardSet = props => {
                                 return setAddCardModalOpen(false)
 
                             }}>
-                            <FontAwesomeIcon title='Add Card'  color={'#e8e8e8'} size={'1x'} icon={faPlus} /> Card
+                            <FontAwesomeIcon title='Add Card' color={'#CFD8DC'} size={'1x'} icon={faPlus} /> Card
                         </button>
 
                         <button
@@ -193,7 +193,7 @@ const CardSet = props => {
                                 return setEditSetModalOpen(false)
 
                             }}>
-                            <FontAwesomeIcon title='Edit Set Info'  color={'#e8e8e8'} size={'1x'} icon={faPen} /> Info 
+                            <FontAwesomeIcon title='Edit Set Info' color={'#CFD8DC'} size={'1x'} icon={faPen} /> Info
                         </button>
 
                     </div>
@@ -201,7 +201,7 @@ const CardSet = props => {
                     {/* control button */}
                     <button className='accordion-toggle' onClick={e => { open === false ? setOpen(true) : setOpen(false) }}>
                         {/* <img alt='toggle icon' className={`accordion-toggle-icon ${open === true ? 'accordion-toggle-open' : ''}`} src={chevron} /> */}
-                        <FontAwesomeIcon title='View Cards'  rotation={`${open === true ? '90' : '0'}`} color={'#e8e8e8'} size={'3x'} icon={faChevronRight} />
+                        <FontAwesomeIcon title='View Cards' rotation={`${open === true ? '90' : '0'}`} color={theme==='light'?'#263238':'#CFD8DC'} size={'3x'} icon={faChevronRight} />
                     </button>
 
 
@@ -222,7 +222,7 @@ const CardSet = props => {
                                         <p>No cards yet</p>
                                         :
                                         <div className='cardList'>
-                          
+
 
 
 
@@ -245,36 +245,42 @@ const CardSet = props => {
                         </div>
                     </div>
 
-                    <button className='delete-card-set' onClick={() =>{
+                    <button className='delete-card-set' onClick={() => {
                         document.body.style.overflow = 'hidden';
-                        setDeleteCardSetModalOpen(true)}}>
-                    <FontAwesomeIcon title='Close Menu' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                        setDeleteCardSetModalOpen(true)
+                    }}>
+                        <FontAwesomeIcon title='Close Menu' color={'#CFD8DC'} size={'2x'} icon={faXmark} />
                     </button>
 
                 </div>
             </div>
 
-            <div id='add-card-modal' className={addCardModalOpen === true ? 'open' : ''}>
+            <div id='add-card-modal' className={addCardModalOpen === true ? `open ${theme}` : ''}>
 
-                <div id='add-card-modal-window'>
+                <div id='add-card-modal-window' className={`${theme}`}>
 
                     <button id='add-card-modal-close' onClick={e => {
                         document.body.style.overflow = 'unset';
-                        setAddCardModalOpen(false)}}>
-                    <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                        setAddCardModalOpen(false)
+                    }}>
+                        <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={theme === 'light' ? '#263238' : '#CFD8DC'} size={'2x'} icon={faXmark} />
                     </button>
 
                     <div id='add-card-modal-content'>
 
                         <form id='addcard'>
 
-                            <div className={`add-card-form${switchActive === true ? ' flipped' : ''}`}>
 
-                                <div className='add-card-form-2'>
 
-                                    <div className='add-card-front'>
+
+                            <div className='add-card-form-container'>
+
+                                <div className={`add-card-form `}>
+
+                                    <div className={`add-card-front ${switchActive === true ? ' flipped' : ''}`}>
                                         <label className={`${focusFront === true || newCardBack.length > 0 ? 'inFocus' : 'noFocus'}`}>front</label>
                                         <textarea
+                                            className={`${theme}`}
                                             onFocus={() => setFocusFront(true)}
                                             onBlur={() => setFocusFront(false)}
                                             onChange={text => { setNewCardFront(text.target.value) }}
@@ -282,9 +288,10 @@ const CardSet = props => {
                                         ></textarea>
                                     </div>
 
-                                    <div className='add-card-back'>
+                                    <div className={`add-card-back ${switchActive === true ? ' flipped' : ''}`}>
                                         <label className={`${focusBack === true || newCardBack.length > 0 ? 'inFocus' : 'noFocus'}`}>back</label>
                                         <textarea
+                                            className={`${theme}`}
                                             onFocus={() => setFocusBack(true)}
                                             onBlur={() => setFocusBack(false)}
                                             onChange={text => { setNewCardBack(text.target.value) }}
@@ -297,6 +304,30 @@ const CardSet = props => {
                                 </div>
 
                             </div>
+
+                            {/* <div className='card-container'>
+                                <div className={`card ${switchActive === true ? ' flipped' : ''}`}>
+                                    <div className='card-front'>
+                                    <label className={`${focusFront === true || newCardBack.length > 0 ? 'inFocus' : 'noFocus'}`}>front</label>
+                                        <textarea
+                                            className={`${theme}`}
+                                            onFocus={() => setFocusFront(true)}
+                                            onBlur={() => setFocusFront(false)}
+                                            onChange={text => { setNewCardFront(text.target.value) }}
+                                            value={newCardFront}
+                                        ></textarea>
+                                    </div>
+                                    <div className='card-back'>
+                                    <label className={`${focusBack === true || newCardBack.length > 0 ? 'inFocus' : 'noFocus'}`}>back</label>
+                                        <textarea
+                                            onFocus={() => setFocusBack(true)}
+                                            onBlur={() => setFocusBack(false)}
+                                            onChange={text => { setNewCardBack(text.target.value) }}
+                                            value={newCardFront}
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div> */}
 
 
 
@@ -340,14 +371,14 @@ const CardSet = props => {
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
-                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faCheck} /></button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'2x'} icon={faCheck} /></button>
                         <button id='add-card-modal-cancel' onClick={e => {
                             document.body.style.overflow = 'unset';
                             setAddCardModalOpen(false);
                             setNewCardFront('');
                             setNewCardBack('');
                             setSwitchActive(false)
-                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} /></button>
+                        }}><FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'2x'} icon={faXmark} /></button>
                     </div>
                 </div>
 
@@ -363,14 +394,15 @@ const CardSet = props => {
 
 
 
-            <div id='delete-card-modal' className={deleteCardModalOpen === true ? 'open' : ''}>
+            <div id='delete-card-modal' className={deleteCardModalOpen === true ? `open ${theme}` : ''}>
 
-                <div id='delete-card-modal-window'>
+                <div id='delete-card-modal-window' className={`${theme}`}>
 
                     <button id='delete-card-modal-close' onClick={e => {
                         document.body.style.overflow = 'unset';
-                        setDeleteCardModalOpen(false)}}>
-                    <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                        setDeleteCardModalOpen(false)
+                    }}>
+                        <FontAwesomeIcon title='Close Delete Card Set Modal' color={theme === 'light' ? '#263238' : '#CFD8DC'} size={'2x'} icon={faXmark} />
                     </button>
 
                     <div id='delete-card-modal-content'>
@@ -384,11 +416,11 @@ const CardSet = props => {
                             console.log('deleting...')
                             document.body.style.overflow = 'unest';
                             setDeleteCardModalOpen(false);
-                            deleteCard(displayCard.id,cards.indexOf(displayCard)).catch(e => console.log(e))
+                            deleteCard(displayCard.id, cards.indexOf(displayCard)).catch(e => console.log(e))
                             //props.refresh()
 
                         }}>
-                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faTrash} /> Delete
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'1x'} icon={faTrash} /> Delete
                         </button>
                         <button id='delete-card-modal-cancel' onClick={e => {
                             document.body.style.overflow = 'unset';
@@ -396,7 +428,7 @@ const CardSet = props => {
                             // setName('');
                             // setDescription('');
                         }}>
-                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faRotateLeft} /> Go Back
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'1x'} icon={faRotateLeft} /> Go Back
                         </button>
                     </div>
                 </div>
@@ -426,16 +458,16 @@ const CardSet = props => {
 
 
 
-            <div id='delete-cardset-modal' className={deleteCardSetModalOpen === true ? 'open' : ''}>
+            <div id='delete-cardset-modal' className={deleteCardSetModalOpen === true ? `open ${theme}` : ''}>
 
-                <div id='delete-cardset-modal-window'>
+                <div id='delete-cardset-modal-window' className={`${theme}`}>
 
                     <button id='delete-cardset-modal-close' onClick={e => {
                         e.preventDefault();
                         document.body.style.overflow = 'unset';
                         return setDeleteCardSetModalOpen(false)
                     }}>
-                        <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                        <FontAwesomeIcon title='Close Delete Card Set Modal' color={theme === 'light' ? '#263238' : '#CFD8DC'} size={'2x'} icon={faXmark} />
                     </button>
 
                     <div id='delete-cardset-modal-content'>
@@ -455,7 +487,7 @@ const CardSet = props => {
                             //     .delete(props.id)
                             //     .catch(e => console.log(e))
                         }}>
-                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faTrash} /> Delete
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'1x'} icon={faTrash} /> Delete
                         </button>
                         <button id='delete-cardset-modal-cancel' onClick={e => {
                             document.body.style.overflow = 'unset';
@@ -463,21 +495,22 @@ const CardSet = props => {
                             // setName('');
                             // setDescription('');
                         }}>
-                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#e8e8e8'} size={'1x'} icon={faRotateLeft} /> Go Back
-                            </button>
+                            <FontAwesomeIcon title='Close Delete Card Set Modal' color={'#CFD8DC'} size={'1x'} icon={faRotateLeft} /> Go Back
+                        </button>
                     </div>
                 </div>
 
             </div>
 
 
-            <div id='edit-set-modal' className={editSetModalOpen === true ? 'open' : ''}>
+            <div id='edit-set-modal' className={editSetModalOpen === true ? `open ${theme}` : ''}>
 
-                <div id='edit-set-modal-window'>
+                <div id='edit-set-modal-window' className={`${theme}`}>
                     <button id='edit-set-modal-close' onClick={e => {
                         document.body.style.overflow = 'unset';
-                        setEditSetModalOpen(false)}}>
-                    <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'2x'} icon={faXmark} />
+                        setEditSetModalOpen(false)
+                    }}>
+                        <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={theme === 'light' ? '#263238' : '#CFD8DC'} size={'2x'} icon={faXmark} />
                     </button>
                     <div id='edit-set-modal-content'>
 
@@ -502,7 +535,7 @@ const CardSet = props => {
 
 
                         }}>
-                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'3x'} icon={faCheck} />
+                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#CFD8DC'} size={'3x'} icon={faCheck} />
                         </button>
                         <button id='edit-set-modal-cancel' onClick={e => {
                             document.body.style.overflow = 'unset';
@@ -510,7 +543,7 @@ const CardSet = props => {
                             setName(props.name);
                             setDescription(props.description);
                         }}>
-                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#e8e8e8'} size={'3x'} icon={faXmark} />
+                            <FontAwesomeIcon title='Close Edit Card Set Info Modal' color={'#CFD8DC'} size={'3x'} icon={faXmark} />
                         </button>
                     </div>
                 </div>

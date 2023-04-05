@@ -18,7 +18,7 @@
 
 .text-area > .focused {
     font-weight: 700;
-    transform: translate(-30%,-135%) scale(0.7);
+    transform: translate(-22%,-135%) scale(0.7);
     transition: 1s;
 }
 
@@ -27,9 +27,11 @@
     top:0px;
     left:50%;
     background-color: transparent;
-    border: solid 1px #e8e8e8;
+    border-width: 1px;
+    border-style: solid;
+    /* border-color: #e8e8e8; */
     border-radius: 25px;
-    color: #e8e8e8;
+    /* color: #e8e8e8; */
     font-size: 1rem;
     z-index: 950;
     width: 80%;
@@ -37,4 +39,14 @@
     font-size: 1.25rem;
     overflow: scroll;
     padding: 0.5rem;
+}
+
+.text-area.light textarea{
+    border-color: #263238;
+    color: #263238;
+}
+
+.text-area.dark textarea{
+    border-color: #CFD8DC;
+    color: #CFD8DC;
 }

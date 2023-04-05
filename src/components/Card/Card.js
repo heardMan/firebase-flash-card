@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useTheme } from '../../contexts/Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus, faCheck, faChevronRight, faChevronLeft, faFloppyDisk, faPen } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +18,7 @@ const Card = props => {
     const [cardEditActive, setCardEditActive] = useState(false);
 
     const [deleteCardModalOpen, setDeleteCardModalOpen] = useState(false);
+    const { theme } = useTheme()
 
     useEffect(() => {
         if (props.displayCard !== undefined) {
@@ -31,7 +32,7 @@ const Card = props => {
             <div className='card-small'>
                 <form className='editcard'>
 
-                    <div className={`edit-card-form${switchActive === true ? ' flipped' : ''}`}>
+                    <div className={`edit-card-form`}>
 
                         <button className='delete-card' onClick={e => {
                             e.preventDefault();
@@ -43,10 +44,11 @@ const Card = props => {
 
                         <div className='edit-card-form-2'>
 
-                            <div className='edit-card-front'>
+                            <div className={`edit-card-front ${switchActive === true ? ' flipped' : ''}`}>
 
                                 <label className={`${focusFront === true || cardFront.length > 0 ? 'editCardInFocus' : 'editCardNotInFocus'}`}>front</label>
                                 <textarea
+                                className={`${theme}`}
                                     onFocus={() => setFocusFront(true)}
                                     onBlur={() => setFocusFront(false)}
                                     onChange={text => { setCardFront(text.target.value) }}
@@ -55,10 +57,11 @@ const Card = props => {
                                 ></textarea>
                             </div>
 
-                            <div className='edit-card-back'>
+                            <div className={`edit-card-back ${switchActive === true ? ' flipped' : ''}`}>
 
                                 <label className={`${focusBack === true || cardBack.length > 0 ? 'editCardInFocus' : 'editCardNotInFocus'}`}>back</label>
                                 <textarea
+                                className={`${theme}`}
                                     onFocus={() => setFocusBack(true)}
                                     onBlur={() => setFocusBack(false)}
                                     onChange={text => { setCardBack(text.target.value) }}

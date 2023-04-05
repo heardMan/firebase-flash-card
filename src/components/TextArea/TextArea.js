@@ -30,16 +30,19 @@
  */
 
 import React, { useState } from 'react';
+import { useTheme } from '../../contexts/Theme.js';
+
 import './TextArea.css';
 
 const TextArea = props => {
 
     const [focus, setFocus] = useState(false);
+    const {theme} = useTheme();
 
     const focusedClass = focus === true || props.value.length > 0 ? 'focused' : '';
 
     return (
-        <div className='text-area'>
+        <div className={`text-area ${theme}`}>
 
             <label className={focusedClass} >{props.label}</label>
 
